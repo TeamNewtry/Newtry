@@ -5,8 +5,9 @@ Feature: Nutrition
     Background: 
         Given I am on the product page
 
-    When product page was opened
-    Given information about nutritional values were found
-    Then list nutritional values
-    Given information about nutritional values was not found
-    Then show info that no nutritional values are present
+    Scenario: Show product information
+        When product page was opened
+        Given information about nutritional values were found
+        Then list nutritional values
+        Given information about nutritional values was not found
+        Then show info that no nutritional values are present
