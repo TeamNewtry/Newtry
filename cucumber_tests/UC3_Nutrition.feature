@@ -1,13 +1,13 @@
 Feature: Nutrition
 
-    As any user I want to be able to see the Nutrition of the scanned/searched product
+    As any user I want to be able to see the nutritional values of the scanned/searched product
 
-    Background: 
-        Given I am on the product page
+    Scenario: Show products nutritional values (success)
+        Given that I am on "dmBio Nusskernmischung"  product page
+        When "dmBio Nusskernmischung" has a database entry
+        Then "Brennwert ..." is shown in the nutrition window
 
-    Scenario: Show product information
-        When product page was opened
-        Given information about nutritional values were found
-        Then list nutritional values
-        Given information about nutritional values was not found
-        Then show info that no nutritional values are present
+    Scenario: Show products  nutritional values (fail)
+        Given that I am on "dmBio Nusskernmischung"  product page
+        When "dmBio Nusskernmischung" doesn't have a database entry
+        Then a error message will be shown on the screen

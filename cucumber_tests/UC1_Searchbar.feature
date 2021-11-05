@@ -2,16 +2,22 @@ Feature: Searchbar
   
     As any user I want to be able to search products by clicking on the searchbar.
 
-    Background:
-        Given I am on the homepage.
+    Scenario: Open the searchbars keyboard
+        Given I am on the homepage
+        When I click on the searchbar
+        Then a keyboard opens
 
-    Scenario: Search a product with the searchbar
-        Given I am on the homepage and clicked on the searchbar
-        Then a keyboard opens.
-        When I type in a products name or EAN
-        Given that the product doesn't exist
-        Then a error message is shown on the screen
-        Given that the product exists 
-        Then a list of possible products is shown below the searchbar
-        When I click on one of the products listed below the searchbar
-        Then product page opens
+    Scenario: Search for a product (fail)
+        Given that I the searchbars keyboard opened
+        When I enter "dasdadsga" or "424859"
+        Then a error message will be displayed on the screen
+
+    Scenario: Search for a product (success)
+        Given that the searchbars keyboard opened
+        When I enter "dmBio Nusskernmischung" or "4058172924859"
+        Then a list of all products which match "dmBio Nusskernmischung" or "4058172924859" is shown below the searchbar
+    
+    Scenario: Show a products ingredients
+        Given that I successfully searched for a product
+        When I click on "dmBio Nusskernmischung"
+        Then a new page will open
