@@ -216,12 +216,6 @@ dependencies {
     } else {
         implementation jscFlavor
     }
-
-    // Firebase BoM -> don't specify versions in Firebase dependencies
-    implementation platform('com.google.firebase:firebase-bom:29.0.0')
-    // Firebase SDK for Google Analytics
-    implementation 'com.google.firebase:firebase-analytics'
-    // other Firebase products
 }
 
 // Run this once to be able to run the application with BUCK
