@@ -6,76 +6,64 @@
  * @flow strict-local
  */
 
-import React from 'react';
-import type {Node} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import React, {Component} from 'react';
+import {View, StyleSheet, Text} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
+
+import firestore from '@react-native-firebase/firestore';
 
 const Section = ({children, title}): Node => {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
     <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
+      <Text style={[styles.sectionTitle, {color: Colors.white}]}>{title}</Text>
+      <Text style={[styles.sectionDescription, {color: Colors.light}]}>
         {children}
       </Text>
     </View>
   );
 };
 
-const App: () => Node = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
+class App extends Component {
+  state = {
+    name1: 'Resolving...',
+    name2: 'Resolving...',
   };
 
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <View
-        style={{
-          backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        }}>
+  constructor(props) {
+    super(props);
+    this.subscriber1 = firestore()
+      .collection('test')
+      .doc('1')
+      .onSnapshot(doc => {
+        this.setState({
+          name1: doc.data().name,
+          name2: this.state.name2,
+        });
+      });
+    this.subscriber2 = firestore()
+      .collection('test')
+      .doc('2')
+      .onSnapshot(doc => {
+        this.setState({
+          name1: this.state.name1,
+          name2: doc.data().name,
+        });
+      });
+  }
+
+  render() {
+    return (
+      <View style={{backgroundColor: Colors.black}}>
         <Section title="Section 1">
           This is <Text style={styles.highlight}>Section 1</Text>.
         </Section>
-        <Section title="Section 2">
-          This is Section 2.
-        </Section>
+        <Section title="Doc 1">Name: {this.state.name1}</Section>
+        <Section title="Doc 2">Name: {this.state.name2}</Section>
       </View>
-    </SafeAreaView>
-  );
-};
+    );
+  }
+}
 
 const styles = StyleSheet.create({
   sectionContainer: {
