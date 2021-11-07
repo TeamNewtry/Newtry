@@ -5,7 +5,7 @@
  * @format
  */
 const getBlacklistRE = function getBlacklistRE() {
-  return new RegExp('(.*\\android\\.*|.*\\__tests__\\.*|.*\\.idea\\.*)$');
+  return /.*[\\]+(android|__tests__|\.idea)[\\]+.*/;
 };
 
 module.exports = {
