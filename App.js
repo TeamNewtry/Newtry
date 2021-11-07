@@ -7,7 +7,7 @@
  */
 
 import React from 'react';
-import {View, StyleSheet, Text, TextInput} from 'react-native';
+import {View, StyleSheet, Text, TextInput, Button} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
@@ -27,6 +27,7 @@ const Section = ({children, title}): Node => {
 const App: () => Node = () => {
   const [name, setName] = React.useState('Retrieving...');
   const [age, setAge] = React.useState('0');
+  const [testText, setTestText] = React.useState('Wrong text');
 
   let doc1 = firestore().collection('test').doc('1');
 
@@ -42,6 +43,8 @@ const App: () => Node = () => {
   const onChangeInfo = (info, isAge) => {
     doc1.update({name: isAge ? name : info, age: isAge ? info : age}).done();
   };
+
+  const sayHelloWorld = () => setTestText('Hello World!');
 
   return (
     <View style={{backgroundColor: Colors.black}}>
@@ -65,6 +68,9 @@ const App: () => Node = () => {
         placeholder="44 oder doch 13½"
         keyboardType="numeric"
       />
+      <Section title="Testing">This is the Hello World Test</Section>
+      <Text>{testText}</Text>
+      <Button title="Say Hello World" onPress={sayHelloWorld} />
     </View>
   );
 };
