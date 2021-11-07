@@ -6,8 +6,8 @@
  * @flow strict-local
  */
 
-import React, {Component} from 'react';
-import {View, StyleSheet, Text} from 'react-native';
+import React from 'react';
+import {View, StyleSheet, Text, TextInput} from 'react-native';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 
@@ -24,46 +24,50 @@ const Section = ({children, title}): Node => {
   );
 };
 
-class App extends Component {
-  state = {
-    name1: 'Resolving...',
-    name2: 'Resolving...',
+const App: () => Node = () => {
+  const [name, setName] = React.useState('Retrieving...');
+  const [age, setAge] = React.useState('0');
+
+  let doc1 = firestore().collection('test').doc('1');
+
+  // init live update of name & age
+  let subscriber = doc1.onSnapshot(doc => {
+    let data = doc.data();
+    setName(data.name);
+    setAge(data.age);
+  });
+
+  const onChangeName = name => onChangeInfo(name, false);
+  const onChangeAge = name => onChangeInfo(name, true);
+  const onChangeInfo = (info, isAge) => {
+    doc1.update({name: isAge ? name : info, age: isAge ? info : age}).done();
   };
 
-  constructor(props) {
-    super(props);
-    this.subscriber1 = firestore()
-      .collection('test')
-      .doc('1')
-      .onSnapshot(doc => {
-        this.setState({
-          name1: doc.data().name,
-          name2: this.state.name2,
-        });
-      });
-    this.subscriber2 = firestore()
-      .collection('test')
-      .doc('2')
-      .onSnapshot(doc => {
-        this.setState({
-          name1: this.state.name1,
-          name2: doc.data().name,
-        });
-      });
-  }
-
-  render() {
-    return (
-      <View style={{backgroundColor: Colors.black}}>
-        <Section title="Section 1">
-          This is <Text style={styles.highlight}>Section 1</Text>.
-        </Section>
-        <Section title="Doc 1">Name: {this.state.name1}</Section>
-        <Section title="Doc 2">Name: {this.state.name2}</Section>
-      </View>
-    );
-  }
-}
+  return (
+    <View style={{backgroundColor: Colors.black}}>
+      <Section title="Doc 'test'">
+        Name: <Text style={styles.highlight}>{name}</Text> {'\n'}
+        Age: <Text style={styles.highlight}>{age}</Text>
+      </Section>
+      <Section title="Tell me more about you...">
+        ...in the following form
+      </Section>
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeName}
+        value={name}
+        placeholder="Margarete"
+      />
+      <TextInput
+        style={styles.input}
+        onChangeText={onChangeAge}
+        value={age.toString()}
+        placeholder="44 oder doch 13½"
+        keyboardType="numeric"
+      />
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   sectionContainer: {
@@ -81,6 +85,13 @@ const styles = StyleSheet.create({
   },
   highlight: {
     fontWeight: '700',
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    borderColor: Colors.light,
+    padding: 10,
   },
 });
 
