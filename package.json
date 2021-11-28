@@ -12,8 +12,12 @@
   "dependencies": {
     "@react-native-firebase/app": "^13.0.1",
     "@react-native-firebase/firestore": "^13.0.1",
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/native": "^6.0.6",
     "react": "17.0.2",
-    "react-native": "0.66.2"
+    "react-native": "^0.66.3",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.9.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
