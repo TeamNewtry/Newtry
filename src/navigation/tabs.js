@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
@@ -29,9 +30,9 @@ function ScanTabBar({children, onPress}) {
 function Tabs() {
   return (
     <Tab.Navigator
-      tabBarOptions={{
-        showLabel: false,
-        style: {
+      screenOptions={({route}) => ({
+        tabBarShowLabel: false,
+        tabBarStyle: {
           height: 60,
           paddingHorizontal: 5,
           paddingTop: 0,
@@ -40,7 +41,7 @@ function Tabs() {
           borderTopColor: '#18A0FB',
           // ...styles.shadow
         },
-      }}>
+      })}>
       <Tab.Screen
         name="Home"
         component={HomeScreen}
