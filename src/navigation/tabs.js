@@ -77,8 +77,8 @@ function Tabs() {
 
                 // Wenn ich diese function in diesem Projekt nicht auskommentiere gibt es ein RenderError
 
-                // tabBarButton: (probs) => (
-                //     <ScanTabBar {...probs} />
+                // tabBarButton: (props) => (
+                //     <ScanTabBar {...props} />
                 // )
             }}/>
             <Tab.Screen name = "Settings" component = {SettingsScreen} options={{
