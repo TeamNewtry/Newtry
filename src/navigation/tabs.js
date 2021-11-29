@@ -14,7 +14,7 @@ function ScanTabBar({children, onPress}) {
       style={{
         top: -10,
         backgroundColor: '#57CFF2',
-        borderRadius: 350,
+        borderRadius: 75,
         width: 150,
         height: 150,
         justifyContent: 'center',
@@ -47,11 +47,12 @@ function Tabs() {
         options={{
           headerShown: false,
           tabBarIcon: ({focused}) => (
-            <View>
+            <View style={{alignItems: 'center', justifyContent: 'center'}}>
               <Image
                 source={require('../assets/hut.png')}
                 style={{
                   width: 20,
+                  height: 20,
                   resizeMode: 'contain',
                 }}
               />
@@ -70,7 +71,8 @@ function Tabs() {
               source={require('../assets/barcode.png')}
               style={{
                 width: 50,
-                top: -35,
+                height: 50,
+                top: -40,
                 resizeMode: 'contain',
               }}
             />
@@ -92,6 +94,7 @@ function Tabs() {
                 source={require('../assets/settings.png')}
                 style={{
                   width: 20,
+                  height: 20,
                   resizeMode: 'contain',
                 }}
               />

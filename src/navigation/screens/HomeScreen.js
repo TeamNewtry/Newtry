@@ -8,8 +8,14 @@ const HomeScreen = () => {
         style={styles.logo}
         source={require('../../assets/logo_large.png')}
       />
-      <Text>Home Screen</Text>
-      <Button title="Click Here" onPress={() => alert('Button Clicked!')} />
+      <Text style={styles.text}>
+        Welcome to Newtry! {'\n'}
+        {'\n'}
+        Try shopping the new way. {'\n'}
+        {'\n'}
+        Scan or search the products and you’ll see everything you need to know
+        💚
+      </Text>
     </View>
   );
 };
@@ -19,7 +25,6 @@ export default HomeScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#EAFFFA',
@@ -27,5 +32,10 @@ const styles = StyleSheet.create({
   logo: {
     maxWidth: '60%',
     resizeMode: 'contain',
+  },
+  text: {
+    textAlign: 'center',
+    fontSize: 20,
+    padding: 25,
   },
 });
