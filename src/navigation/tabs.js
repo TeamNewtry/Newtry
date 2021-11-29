@@ -38,7 +38,7 @@ function Tabs() {
           paddingTop: 0,
           backgroundColor: '#D7E1DF',
           borderTopWidth: 3,
-          borderTopColor: '#18A0FB',
+          borderTopColor: '#03936f',
           // ...styles.shadow
         },
       })}>
@@ -73,7 +73,7 @@ function Tabs() {
               style={{
                 width: 50,
                 height: 50,
-                top: -40,
+                top: -36,
                 resizeMode: 'contain',
               }}
             />
