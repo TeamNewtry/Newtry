@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Image, StyleSheet, TouchableOpactiy } from 'react-native';
+import { View, Image, StyleSheet, TouchableOpacity } from 'react-native';
 
 import SettingsScreen from './screens/SettingsScreen';
 import HomeScreen from './screens/HomeScreen';
@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator();
 
 function ScanTabBar({children,onPress}) {
     return(
-        <TouchableOpactiy
+        <TouchableOpacity
             style= {{
                 top:-10,
                 backgroundColor: '#57CFF2',
@@ -18,14 +18,14 @@ function ScanTabBar({children,onPress}) {
                 width: 150,
                 height: 150,
                 justifyContent: 'center',
-                alignItems:'center',
+                alignItems:'center'
             }}
             onPress={onPress}
         >
             <View style={{width: 35, height: 35, borderRadius: 35 }}>
                 {children}
             </View>
-        </TouchableOpactiy>
+        </TouchableOpacity>
     )
 }
 
@@ -70,16 +70,17 @@ function Tabs() {
                         width: 50,
                         top: -35,
                         resizeMode:'contain'
-
                     }}
                     />
                 ),
 
+                
+
                 // Wenn ich diese function in diesem Projekt nicht auskommentiere gibt es ein RenderError
 
-                // tabBarButton: (props) => (
-                //     <ScanTabBar {...props} />
-                // )
+                tabBarButton: (props) => (
+                    <ScanTabBar {...props} />
+                )
             }}/>
             <Tab.Screen name = "Settings" component = {SettingsScreen} options={{
                 headerShown: false,
