@@ -1,26 +1,34 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Button, StyleSheet, Image, ViewBase} from 'react-native';
 
-import Searchbar from '../../components/Seachbar.component';
-
-const HomeScreen = () => {
-  // eslint-disable-next-line no-undef
-  const [value, setValue] = useState();
-  function updateSearch(value) {
-    //search logic or anything
-    console.log(value);
-  }
+// import Searchbar from '../../components/Seachbar.component';
+import {SearchBar} from 'react-native-elements';
+const HomeScreen = ({navigation}) => {
+  const [searchQuery, setSearchQuery] = React.useState('');
+  const onChangeSearch = query => {
+    setSearchQuery(query);
+  };
   return (
     <View style={styles.container}>
       <Image
         style={styles.logo}
         source={require('../../assets/logo_large.png')}
       />
-
-      <Searchbar
+      <SearchBar
+        inputStyle={{backgroundColor: 'white'}}
+        containerStyle={{
+          backgroundColor: 'white',
+          borderWidth: 1,
+          borderRadius: 5,
+        }}
         style={styles.searchbar}
-        value={value}
-        updateSearch={updateSearch}
+        inputContainerStyle={{backgroundColor: 'white'}}
+        placeholderTextColor={'#g5g5g5'}
+        onChangeText={onChangeSearch}
+        onSubmitEditing={() =>
+          navigation.navigate('ProductView', {name: 'jakob'})
+        }
+        placeholder={'Search for products'}
       />
       <View>
         <Text style={styles.text}>
@@ -56,6 +64,6 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   searchbar: {
-    width: '90%',
+    width: '100%',
   },
 });
