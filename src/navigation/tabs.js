@@ -14,7 +14,7 @@ function ScanTabBar({children, onPress}) {
     <TouchableOpacity
       style={{
         top: -10,
-        backgroundColor: '#57CFF2',
+        backgroundColor: '#00C2FF',
         borderRadius: 75,
         width: 150,
         height: 150,
