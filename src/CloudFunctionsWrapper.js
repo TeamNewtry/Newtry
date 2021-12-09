@@ -18,7 +18,7 @@ function getProductByGTIN(gtin) {
       nutriInfo.proteins,
       nutriInfo.salt,
     );
-    let product = new Product(
+    return new Product(
       info.code,
       info.product_name,
       info.generic_name,
@@ -28,8 +28,16 @@ function getProductByGTIN(gtin) {
       info.nutriscore_data.grade,
       [info.image_url],
     );
-    console.log(product);
-    return product;
+  });
+}
+
+function searchProducts(gtinOrName) {
+  return callCloudFunction('search', {searchTerm: gtinOrName}, response => {
+    const info = response.data;
+    console.log(info);
+    const productIds = info.map(product => product.id);
+    console.log(productIds);
+    return productIds;
   });
 }
 
@@ -49,8 +57,15 @@ async function callCloudFunction(functionName, parameters, resolve) {
     })
     .catch(reason => {
       console.error(`error ${functionName} with`, parameters);
-      console.error(reason);
+      console.error(
+        'Code: ',
+        reason.code,
+        'Message: ',
+        reason.message,
+        'Details: ',
+        reason.details,
+      );
     });
 }
 
-export {getProductByGTIN};
+export {getProductByGTIN, searchProducts};
