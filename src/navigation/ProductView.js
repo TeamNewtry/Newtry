@@ -10,21 +10,26 @@ import {
   Cell,
 } from 'react-native-table-component';
 import Unorderedlist from 'react-native-unordered-list';
+import {useAsync} from 'react-async';
 import {getProductByGTIN} from '../CloudFunctionsWrapper';
 
 const ProductView = ({navigation, route}) => {
+  const {data, error} = useAsync({
+    promiseFn: getProductByGTIN,
+    gtin: route.params.gtin,
+  });
+  console.log(JSON.stringify(data));
+
   // const tableHead = [' Average nutritional values', ' per 100g'];
-  // const data = route.params;
   // const nut = data.nutrition;
   // const tableData = [
-  //   [' Calories', ` ${nut.calories} kcal`],
-  //   [' Total Fat', ` ${nut.totalFat} g`],
+  //   [' Calories', ` ${nut} kcal`],
+  //   [' Total Fat', ` ${nut.nutriInfo.fat} g`],
   //   [' Saturated Fat', ` ${nut.saturatedFat} g`],
-  //   [' Carbohydrates', ` ${nut.carbohydrates} g`],
-  //   [' Total sugar', ` ${nut.totalSugar} g`],
-  //   [' Fibre', ` ${nut.fibre} g`],
-  //   [' Protein', ` ${nut.protein} g`],
-  //   [' Salt', ` ${nut.salt} g`],
+  //   [' Carbohydrates', ` ${nut.nutriInfo.carbohydrates} g`],
+  //   [' Total sugar', ` ${nut.nutriInfo.sugars} g`],
+  //   [' Protein', ` ${nut.nutriInfo.proteins} g`],
+  //   [' Salt', ` ${nut.nutriInfo.salt} g`],
   // ];
   return (
     <View style={styles.container}>
@@ -39,35 +44,35 @@ const ProductView = ({navigation, route}) => {
         {/*    <Text />*/}
         {/*    <Text style={styles.description}>{data.description}</Text>*/}
         {/*  </View>*/}
-          {/*<View>*/}
-          {/*  <Table borderStyle={{borderWidth: 1}}>*/}
-          {/*    <Row*/}
-          {/*      data={tableHead}*/}
-          {/*      flexArr={[2, 1]}*/}
-          {/*      style={styles.head}*/}
-          {/*      textStyle={styles.text}*/}
-          {/*    />*/}
-          {/*    <TableWrapper style={styles.wrapper}>*/}
-          {/*      <Rows*/}
-          {/*        data={tableData}*/}
-          {/*        flexArr={[2, 1]}*/}
-          {/*        resizeMode="contain"*/}
-          {/*        style={styles.row}*/}
-          {/*        textStyle={styles.text}*/}
-          {/*      />*/}
-          {/*    </TableWrapper>*/}
-          {/*  </Table>*/}
-          {/*</View>*/}
-          {/*<View>*/}
-          {/*  <Text style={styles.title}>Ingredients:</Text>*/}
-          {/*  {data.ingredients.map(element => {*/}
-          {/*    return (*/}
-          {/*      <Unorderedlist>*/}
-          {/*        <Text style={styles.description}>{element.ing}</Text>*/}
-          {/*      </Unorderedlist>*/}
-          {/*    );*/}
-          {/*  })}*/}
-          {/*</View>*/}
+        {/*<View>*/}
+        {/*  <Table borderStyle={{borderWidth: 1}}>*/}
+        {/*    <Row*/}
+        {/*      data={tableHead}*/}
+        {/*      flexArr={[2, 1]}*/}
+        {/*      style={styles.head}*/}
+        {/*      textStyle={styles.text}*/}
+        {/*    />*/}
+        {/*    <TableWrapper style={styles.wrapper}>*/}
+        {/*      <Rows*/}
+        {/*        data={tableData}*/}
+        {/*        flexArr={[2, 1]}*/}
+        {/*        resizeMode="contain"*/}
+        {/*        style={styles.row}*/}
+        {/*        textStyle={styles.text}*/}
+        {/*      />*/}
+        {/*    </TableWrapper>*/}
+        {/*  </Table>*/}
+        {/*</View>*/}
+        {/*<View>*/}
+        {/*  <Text style={styles.title}>Ingredients:</Text>*/}
+        {/*  {data.ingredients.map(element => {*/}
+        {/*    return (*/}
+        {/*      <Unorderedlist>*/}
+        {/*        <Text style={styles.description}>{element.ing}</Text>*/}
+        {/*      </Unorderedlist>*/}
+        {/*    );*/}
+        {/*  })}*/}
+        {/*</View>*/}
         {/*</View>*/}
       </ScrollView>
     </View>

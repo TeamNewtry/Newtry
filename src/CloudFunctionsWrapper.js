@@ -5,7 +5,7 @@ import Nutrition from './store/Nutrition';
 
 const functions = firebase.app().functions('europe-west1');
 
-function getProductByGTIN(gtin) {
+function getProductByGTIN({gtin}) {
   return callCloudFunction('getProduct', {id: gtin}, response => {
     const info = response.data.product;
     const nutriInfo = info.nutriments;

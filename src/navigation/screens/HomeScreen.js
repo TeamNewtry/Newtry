@@ -26,7 +26,7 @@ const HomeScreen = ({navigation}) => {
         placeholderTextColor={'#g5g5g5'}
         onChangeText={onChangeSearch}
         onSubmitEditing={() =>
-          navigation.navigate('ProductView', {name: 'jakob'})
+          navigation.navigate('ProductView', {gtin: '20005726'})
         }
         placeholder={'Search for products'}
       />
