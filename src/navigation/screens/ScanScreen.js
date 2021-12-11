@@ -1,19 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
 import {RNCamera} from 'react-native-camera';
 
 let nav;
 
 const onBarcodeRead = e => {
   const barcodeValue = e.data;
-  const barcodeType = e.type;
   nav.navigate('ProductView', {gtin: barcodeValue});
 };
 
@@ -34,7 +26,7 @@ const ScanScreen = ({navigation}) => {
           buttonNegative: 'Cancel',
         }}
         onBarCodeRead={onBarcodeRead}>
-        {({camera, status}) => {
+        {({status}) => {
           if (status !== 'READY') {
             return <Text>Camera loading...</Text>;
           }
