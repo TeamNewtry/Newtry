@@ -1,20 +1,54 @@
 import React from 'react';
-import {View, Text, Button, StyleSheet, Image} from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import {RNCamera} from 'react-native-camera';
 
-const ScanScreen = () => {
+let nav;
+
+const onBarcodeRead = e => {
+  const barcodeValue = e.data;
+  const barcodeType = e.type;
+  nav.navigate('ProductView', {gtin: barcodeValue});
+};
+
+const ScanScreen = ({navigation}) => {
+  nav = navigation;
+
   return (
     <View style={styles.container}>
-      <Image
-        style={styles.logo}
-        source={require('../../assets/logo_large.png')}
-      />
-      <Text>Scan Screen</Text>
-      <Button title="Click Here" onPress={() => alert('Button Clicked!')} />
+      <RNCamera
+        style={styles.preview}
+        type={RNCamera.Constants.Type.back}
+        flashMode={RNCamera.Constants.FlashMode.on}
+        captureAudio={false}
+        androidCameraPermissionOptions={{
+          title: 'Permission to use camera',
+          message: 'We need your permission to use your camera',
+          buttonPositive: 'Ok',
+          buttonNegative: 'Cancel',
+        }}
+        onBarCodeRead={onBarcodeRead}>
+        {({camera, status}) => {
+          if (status !== 'READY') {
+            return <Text>Camera loading...</Text>;
+          }
+          return (
+            <View
+              style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
+              <Text>🎅</Text>
+            </View>
+          );
+        }}
+      </RNCamera>
     </View>
   );
 };
-
-export default ScanScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -28,4 +62,11 @@ const styles = StyleSheet.create({
     maxWidth: '60%',
     resizeMode: 'contain',
   },
+  preview: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
 });
+
+export default ScanScreen;
