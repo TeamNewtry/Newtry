@@ -1236,7 +1236,7 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/eslint-plugin/-/eslint-plugin-1.1.0.tgz#e42b1bef12d2415411519fd528e64b593b1363dc"
   integrity sha512-W/J0fNYVO01tioHjvYWQ9m6RgndVtbElzYozBq1ZPrHO/iCzlqoySHl4gO/fpCl9QEFjvJfjPgtPMTMlsoq5DQ==
 
-"@react-native-firebase/app@^13.0.1":
+"@react-native-firebase/app@^13.1.0":
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-13.1.0.tgz#227fa772dbd8671c550afb5f4042361aad1a50b0"
   integrity sha512-sgjbU2Zrfswc1M9KMG0vpl/WtrRbb0APof9WIg6wpp3ELOLkxOk5F8TYBbCadmv9HN9p+XyQJbPWMJ2C5hJYfQ==
@@ -1245,7 +1245,7 @@
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/firestore@^13.0.1":
+"@react-native-firebase/firestore@^13.1.0":
   version "13.1.0"
   resolved "https://registry.yarnpkg.com/@react-native-firebase/firestore/-/firestore-13.1.0.tgz#63d86e37cd8676b4ea3b55a5d6227cf2ba933cfd"
   integrity sha512-Ai7qkNt7WMINab0cvWGI7Hx1jfd5vppGyW1SN4MxvEgJOnLFqtxQf+dfC9RQ1MXnLcHSyIzht78Nuex8Y/9PKg==
