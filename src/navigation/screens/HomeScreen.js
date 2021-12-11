@@ -3,11 +3,8 @@ import {View, Text, Button, StyleSheet, Image, ViewBase} from 'react-native';
 
 // import Searchbar from '../../components/Seachbar.component';
 import {SearchBar} from 'react-native-elements';
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({navigation, route}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
-  const onChangeSearch = query => {
-    setSearchQuery(query);
-  };
   return (
     <View style={styles.container}>
       <Image
@@ -20,13 +17,14 @@ const HomeScreen = ({navigation}) => {
           backgroundColor: 'white',
           borderWidth: 1,
           borderRadius: 5,
+          width: '80%',
         }}
         style={styles.searchbar}
         inputContainerStyle={{backgroundColor: 'white'}}
-        placeholderTextColor={'#g5g5g5'}
-        onChangeText={onChangeSearch}
+        value={searchQuery}
+        onChangeText={setSearchQuery}
         onSubmitEditing={() =>
-          navigation.navigate('ProductView', {gtin: '20005726'})
+          navigation.navigate('ProductView', {gtin: searchQuery})
         }
         placeholder={'Search for products'}
       />
@@ -64,6 +62,6 @@ const styles = StyleSheet.create({
     padding: 5,
   },
   searchbar: {
-    width: '100%',
+    padding: 2,
   },
 });

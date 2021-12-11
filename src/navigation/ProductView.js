@@ -12,71 +12,89 @@ import {
 import Unorderedlist from 'react-native-unordered-list';
 import {useAsync} from 'react-async';
 import {getProductByGTIN} from '../CloudFunctionsWrapper';
+import {Icon} from 'react-native-elements';
+import {ArrowLeftOutlined} from '@ant-design/icons';
 
 const ProductView = ({navigation, route}) => {
-  const {data, error} = useAsync({
-    promiseFn: getProductByGTIN,
+  const {data, error} = useAsync(getProductByGTIN, {
     gtin: route.params.gtin,
   });
-  console.log(JSON.stringify(data));
+  if (typeof data !== 'undefined') {
+    const tableHead = [' Average nutritional values', ' per 100g'];
+    const nut = data.nutrition;
+    const tableData = [
+      [' Calories', ` ${nut.calories} kcal`],
+      [' Total Fat', ` ${nut.totalFat} g`],
+      [' Saturated Fat', ` ${nut.saturatedFat} g`],
+      [' Carbohydrates', ` ${nut.carbohydrates} g`],
+      [' Total sugar', ` ${nut.sugar} g`],
+      [' Protein', ` ${nut.protein} g`],
+      [' Salt', ` ${nut.salt} g`],
+    ];
 
-  // const tableHead = [' Average nutritional values', ' per 100g'];
-  // const nut = data.nutrition;
-  // const tableData = [
-  //   [' Calories', ` ${nut} kcal`],
-  //   [' Total Fat', ` ${nut.nutriInfo.fat} g`],
-  //   [' Saturated Fat', ` ${nut.saturatedFat} g`],
-  //   [' Carbohydrates', ` ${nut.nutriInfo.carbohydrates} g`],
-  //   [' Total sugar', ` ${nut.nutriInfo.sugars} g`],
-  //   [' Protein', ` ${nut.nutriInfo.proteins} g`],
-  //   [' Salt', ` ${nut.nutriInfo.salt} g`],
-  // ];
-  return (
-    <View style={styles.container}>
-      <ScrollView>
-        {/*<View style={styles.imageBorder}>*/}
-        {/*  <Image source={data.imagePath} style={styles.image} />*/}
-        {/*</View>*/}
-        {/*<View style={styles.padding}>*/}
-        {/*  <View style={styles.textContainer}>*/}
-        {/*    <Text style={styles.title}>{data.name}</Text>*/}
-        {/*    <Text style={styles.gtin}>GTIN: {data.gtin}</Text>*/}
-        {/*    <Text />*/}
-        {/*    <Text style={styles.description}>{data.description}</Text>*/}
-        {/*  </View>*/}
-        {/*<View>*/}
-        {/*  <Table borderStyle={{borderWidth: 1}}>*/}
-        {/*    <Row*/}
-        {/*      data={tableHead}*/}
-        {/*      flexArr={[2, 1]}*/}
-        {/*      style={styles.head}*/}
-        {/*      textStyle={styles.text}*/}
-        {/*    />*/}
-        {/*    <TableWrapper style={styles.wrapper}>*/}
-        {/*      <Rows*/}
-        {/*        data={tableData}*/}
-        {/*        flexArr={[2, 1]}*/}
-        {/*        resizeMode="contain"*/}
-        {/*        style={styles.row}*/}
-        {/*        textStyle={styles.text}*/}
-        {/*      />*/}
-        {/*    </TableWrapper>*/}
-        {/*  </Table>*/}
-        {/*</View>*/}
-        {/*<View>*/}
-        {/*  <Text style={styles.title}>Ingredients:</Text>*/}
-        {/*  {data.ingredients.map(element => {*/}
-        {/*    return (*/}
-        {/*      <Unorderedlist>*/}
-        {/*        <Text style={styles.description}>{element.ing}</Text>*/}
-        {/*      </Unorderedlist>*/}
-        {/*    );*/}
-        {/*  })}*/}
-        {/*</View>*/}
-        {/*</View>*/}
-      </ScrollView>
-    </View>
-  );
+    return (
+      <View style={styles.container}>
+        <ScrollView>
+          <View style={styles.imageBorder}>
+            <View>
+              <Icon
+                name={'arrow-left'}
+                size={20}
+                reverse={true}
+                type={'font-awesome'}
+                onPress={() => navigation.navigate('Home', {route})}
+                reverseColor={'black'}
+                color={'transparent'}
+              />
+            </View>
+            <Image
+              source={{uri: data.pictures.toString()}}
+              style={styles.image}
+            />
+          </View>
+          <View style={styles.padding}>
+            <View style={styles.textContainer}>
+              <Text style={styles.title}>{data.name}</Text>
+              <Text style={styles.gtin}>GTIN: {data.gtin}</Text>
+              <Text />
+              <Text style={styles.description}>{data.description}</Text>
+            </View>
+            <View>
+              <Table borderStyle={{borderWidth: 1}}>
+                <Row
+                  data={tableHead}
+                  flexArr={[2, 1]}
+                  style={styles.head}
+                  textStyle={styles.text}
+                />
+                <TableWrapper style={styles.wrapper}>
+                  <Rows
+                    data={tableData}
+                    flexArr={[2, 1]}
+                    resizeMode="contain"
+                    style={styles.row}
+                    textStyle={styles.text}
+                  />
+                </TableWrapper>
+              </Table>
+            </View>
+            <View>
+              <Text style={styles.title}>Ingredients:</Text>
+              {data.ingredients.split(',').map(element => {
+                return (
+                  <Unorderedlist key={element}>
+                    <Text style={styles.description}>{element}</Text>
+                  </Unorderedlist>
+                );
+              })}
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+    );
+  } else {
+    return <View />;
+  }
 };
 
 export default ProductView;
