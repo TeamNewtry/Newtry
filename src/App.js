@@ -1,12 +1,23 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import Tabs from './navigation/tabs';
+
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Tabs from './navigation/Tabs';
+import ProductView from './navigation/ProductView';
+import {SafeAreaProvider} from 'react-native-safe-area-context/src/SafeAreaContext';
+
+const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-    <NavigationContainer>
-      <Tabs />
-    </NavigationContainer>
+    <SafeAreaProvider>
+      <NavigationContainer>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name={'Home'} component={Tabs} />
+          <Stack.Screen name={'ProductView'} component={ProductView} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
 
