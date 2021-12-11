@@ -10,19 +10,33 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-firebase/app": "^13.0.1",
-    "@react-native-firebase/firestore": "^13.0.1",
+    "@ant-design/icons": "^4.7.0",
+    "@react-native-firebase/app": "^13.1.0",
+    "@react-native-firebase/firestore": "^13.1.0",
+    "@react-native-firebase/functions": "^13.1.0",
+    "@react-navigation/bottom-tabs": "^6.0.9",
+    "@react-navigation/native": "^6.0.6",
     "react": "17.0.2",
-    "react-native": "0.66.2"
+    "react-async": "^10.0.1",
+    "react-native": "^0.66.3",
+    "react-native-camera": "^4.2.1",
+    "react-native-elements": "^3.4.2",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-screens": "^3.9.0",
+    "react-native-unordered-list": "^1.0.4",
+    "react-native-vector-icons": "^9.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/runtime": "^7.16.0",
     "@react-native-community/eslint-config": "^3.0.1",
+    "@react-navigation/native-stack": "^6.2.5",
     "babel-jest": "^27.3.1",
     "eslint": "^7.32.0",
     "jest": "^27.3.1",
     "metro-react-native-babel-preset": "^0.66.2",
+    "react-native-paper": "^4.10.1",
+    "react-native-table-component": "^1.2.1",
     "react-test-renderer": "17.0.2"
   },
   "jest": {
