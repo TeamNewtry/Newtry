@@ -5,7 +5,7 @@ import Nutrition from './store/Nutrition';
 
 const functions = firebase.app().functions('europe-west1');
 
-function getProductByGTIN(gtin) {
+function getProductByGTIN({gtin}) {
   return callCloudFunction('getProduct', {id: gtin}, response => {
     const info = response.data.product;
     const nutriInfo = info.nutriments;
@@ -23,7 +23,7 @@ function getProductByGTIN(gtin) {
       info.product_name,
       info.generic_name,
       nutrition,
-      info.ingredients_text,
+      info.ingredients_text_de ?? info.ingredients_text,
       null,
       info.nutriscore_data.grade,
       [info.image_url],
@@ -31,7 +31,7 @@ function getProductByGTIN(gtin) {
   });
 }
 
-function searchProducts(gtinOrName) {
+function searchProducts({gtinOrName}) {
   return callCloudFunction('search', {searchTerm: gtinOrName}, response => {
     const info = response.data;
     console.log(info);
