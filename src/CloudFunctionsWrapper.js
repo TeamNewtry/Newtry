@@ -34,10 +34,7 @@ function getProductByGTIN({gtin}) {
 function searchProducts({gtinOrName}) {
   return callCloudFunction('search', {searchTerm: gtinOrName}, response => {
     const info = response.data;
-    console.log(info);
-    const productIds = info.map(product => product.id);
-    console.log(productIds);
-    return productIds;
+    return info.map(product => product.id);
   });
 }
 
@@ -49,22 +46,13 @@ async function callCloudFunction(functionName, parameters, resolve) {
         typeof response.data !== 'object' ||
         'httpErrorCode' in response.data
       ) {
-        console.error(`fail ${functionName} with`, parameters);
-        console.error(response.data);
-        return;
+        throw response.data;
       }
       return resolve(response);
     })
     .catch(reason => {
       console.error(`error ${functionName} with`, parameters);
-      console.error(
-        'Code: ',
-        reason.code,
-        'Message: ',
-        reason.message,
-        'Details: ',
-        reason.details,
-      );
+      throw reason;
     });
 }
 
