@@ -13,7 +13,7 @@ function App() {
     <SafeAreaProvider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name={'Home'} component={Tabs} />
+          <Stack.Screen name={'HomeScreen'} component={Tabs} />
           <Stack.Screen name={'ProductView'} component={ProductView} />
         </Stack.Navigator>
       </NavigationContainer>
