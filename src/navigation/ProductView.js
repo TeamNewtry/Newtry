@@ -110,15 +110,18 @@ export default ProductView;
 const styles = StyleSheet.create({
   container: {flex: 1, backgroundColor: '#EAFFFA'},
   head: {height: 40, backgroundColor: '#f1f8ff'},
-  wrapper: {flexDirection: 'row'},
+  wrapper: {
+    flexDirection: 'row',
+  },
   title: {
     fontSize: 20,
     paddingTop: 10,
-    fontWeight: 'bold',
     fontFamily: 'Comfortaa',
   },
   textContainer: {marginTop: 10, marginBottom: 10},
-  row: {height: 40},
+  row: {
+    height: 35,
+  },
   text: {textAlign: 'left'},
   image: {
     width: window.outerWidth,

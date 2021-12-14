@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#60dbfd',
     flex: 1,
     borderRadius: 15,
+    fontFamily: 'Comfortaa',
   },
 
   vwSearch: {
