@@ -16,9 +16,9 @@ const HomeScreen = ({navigation, route}) => {
           console.log(item);
           return await getProductByGTIN({gtin: item});
         }),
+        navigation.navigate('ProductView', {gtin: productIds[0]}),
       );
       return res;
-      // navigation.navigate('ProductView', {gtin: productIds[2]})
     }
   };
   return (
@@ -48,7 +48,7 @@ const HomeScreen = ({navigation, route}) => {
         }}
         placeholder={'Search for products'}
       />
-      <View id={'searchbarContainer'} />
+      <View nativeID={'searchbarContainer'} />
       <View>
         <Text style={styles.text}>
           Welcome to Newtry! {'\n'}
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 20,
-    marginTop: 180,
+    marginTop: '25%',
     paddingBottom: 5,
   },
   searchbar: {

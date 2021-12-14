@@ -61,7 +61,7 @@ const ProductView = ({navigation, route}) => {
               <Text style={styles.description}>{data.description}</Text>
             </View>
             <View>
-              <Table borderStyle={{borderWidth: 1}}>
+              <Table borderStyle={{borderWidth: 1, borderColor: 'gray'}}>
                 <Row
                   data={tableHead}
                   flexArr={[2, 1]}
