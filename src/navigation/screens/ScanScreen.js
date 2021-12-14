@@ -33,7 +33,7 @@ const ScanScreen = ({navigation}) => {
           return (
             <View
               style={{flex: 0, flexDirection: 'row', justifyContent: 'center'}}>
-              <Text>🎅</Text>
+              <Text>🍆</Text>
             </View>
           );
         }}
