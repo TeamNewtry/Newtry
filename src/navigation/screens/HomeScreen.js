@@ -1,24 +1,28 @@
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
-
-// import Searchbar from '../../components/Seachbar.component';
 import {SearchBar} from 'react-native-elements';
 import {getProductByGTIN, searchProducts} from '../../CloudFunctionsWrapper';
+import {Table, TableWrapper, Row, Rows} from 'react-native-table-component';
 
 const HomeScreen = ({navigation, route}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
+  const [tableData, setTableData] = React.useState([
+    '',
+    'Keine Ergebnisse gefunden',
+    '',
+  ]);
 
   const updateSearchEntries = async query => {
     const productIds = await searchProducts({gtinOrName: query});
     if (productIds.length > 0) {
-      let res = await Promise.all(
+      return await Promise.all(
         productIds.map(async item => {
-          console.log(item);
           return await getProductByGTIN({gtin: item});
         }),
         // navigation.navigate('ProductView', {gtin: productIds[0]}),
       );
-      return res;
+
+      // navigation.navigate('ProductView', {gtin: productIds[2]})
     }
   };
   return (
@@ -41,14 +45,33 @@ const HomeScreen = ({navigation, route}) => {
         value={searchQuery}
         onChangeText={setSearchQuery}
         onSubmitEditing={() => {
-          updateSearchEntries(searchQuery).catch(error =>
-            //code: not found
-            console.error('Error in updateSearchEntries:', error),
-          );
+          updateSearchEntries(searchQuery)
+            .then(result => {
+              const r = result.map(res => {
+                return [res.pictures.toString(), res.name, res.gtin];
+              });
+              setTableData(r);
+            })
+            .catch(error =>
+              //code: not found
+              console.error('Error in updateSearchEntries:', error),
+            );
         }}
         placeholder={'Search for products'}
       />
-      <View nativeID={'searchbarContainer'} />
+
+      <View>
+        <Table borderStyle={{borderWidth: 1, borderColor: 'black'}}>
+          <TableWrapper style={styles.wrapper}>
+            {/*<Rows*/}
+            {/*  data={[['1', '2', '3']]}*/}
+            {/*  flexArr={[1, 3, 1]}*/}
+            {/*  resizeMode="contain"*/}
+            {/*  style={styles.row}*/}
+            {/*/>*/}
+          </TableWrapper>
+        </Table>
+      </View>
       <View>
         <Text style={styles.text}>
           Willkommen bei Newtry! {'\n'}
@@ -72,6 +95,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#EAFFFA',
     justifyContent: 'flex-start',
   },
+  wrapper: {flexDirection: 'row'},
+  row: {height: 40},
   logo: {
     height: 200,
     width: 300,

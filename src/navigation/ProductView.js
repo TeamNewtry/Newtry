@@ -15,6 +15,14 @@ import {getProductByGTIN} from '../CloudFunctionsWrapper';
 import {Icon} from 'react-native-elements';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 
+const splitIngredients = ingredients => {
+  const regex = /[^,([]+([([].*?[)\]]+)?/g;
+  const results = [...ingredients.matchAll(regex)];
+  return results
+    .map(result => result[0].trim())
+    .filter(result => result.length > 1);
+};
+
 const ProductView = ({navigation, route}) => {
   const {data, error} = useAsync(getProductByGTIN, {
     gtin: route.params.gtin,
@@ -81,7 +89,7 @@ const ProductView = ({navigation, route}) => {
             </View>
             <View>
               <Text style={styles.title}>Ingredients:</Text>
-              {data.ingredients.split(',').map(element => {
+              {splitIngredients(data.ingredients).map(element => {
                 return (
                   <Unorderedlist key={element}>
                     <Text style={styles.description}>{element}</Text>
