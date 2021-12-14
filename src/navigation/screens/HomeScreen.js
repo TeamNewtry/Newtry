@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {SearchBar} from 'react-native-elements';
@@ -32,16 +33,26 @@ const HomeScreen = ({navigation, route}) => {
         source={require('../../assets/logo_large.png')}
       />
       <SearchBar
-        inputStyle={{backgroundColor: '#60dbfd', color: 'black'}}
+        inputStyle={{
+          backgroundColor: '#60dbfd',
+          color: 'black',
+        }}
         containerStyle={{
           backgroundColor: '#60dbfd',
-          borderWidth: 1,
+          borderWidth: 0,
+          borderTopWidth: 0,
+          borderBottomWidth: 0,
           borderRadius: 35,
           width: '85%',
-          height: 67,
+          height: 50,
         }}
         style={styles.searchbar}
-        inputContainerStyle={{backgroundColor: '#60dbfd'}}
+        inputContainerStyle={{
+          backgroundColor: '#60dbfd',
+          width: '94%',
+          marginLeft: '3%',
+          height: '100%',
+        }}
         value={searchQuery}
         onChangeText={setSearchQuery}
         onSubmitEditing={() => {
@@ -112,7 +123,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Comfortaa',
   },
   searchbar: {
-    padding: 2,
+    padding: 5,
     fontFamily: 'Comfortaa',
   },
 });
