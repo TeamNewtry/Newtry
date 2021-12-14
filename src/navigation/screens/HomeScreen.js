@@ -28,15 +28,16 @@ const HomeScreen = ({navigation, route}) => {
         source={require('../../assets/logo_large.png')}
       />
       <SearchBar
-        inputStyle={{backgroundColor: 'white'}}
+        inputStyle={{backgroundColor: '#00C2FF', color: 'black'}}
         containerStyle={{
-          backgroundColor: 'white',
+          backgroundColor: '#00C2FF',
           borderWidth: 1,
-          borderRadius: 5,
-          width: '80%',
+          borderRadius: 35,
+          width: '85%',
+          height: 67,
         }}
         style={styles.searchbar}
-        inputContainerStyle={{backgroundColor: 'white'}}
+        inputContainerStyle={{backgroundColor: '#00C2FF'}}
         value={searchQuery}
         onChangeText={setSearchQuery}
         onSubmitEditing={() => {
@@ -79,7 +80,7 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 20,
-    paddingTop: 200,
+    marginTop: 180,
     paddingBottom: 5,
   },
   searchbar: {

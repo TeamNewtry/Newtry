@@ -16,7 +16,7 @@ export default function Searchbar({value, updateSearch, style}) {
       <View style={styles.searchContainer}>
         <TextInput
           value={query}
-          placeholder="Search item..."
+          placeholder=""
           style={styles.textInput}
           onChangeText={text => {
             var letters = /^$|^[a-zA-Z._\b ]+$/;
