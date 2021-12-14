@@ -16,7 +16,7 @@ const HomeScreen = ({navigation, route}) => {
           console.log(item);
           return await getProductByGTIN({gtin: item});
         }),
-        navigation.navigate('ProductView', {gtin: productIds[0]}),
+        // navigation.navigate('ProductView', {gtin: productIds[0]}),
       );
       return res;
     }
@@ -51,12 +51,12 @@ const HomeScreen = ({navigation, route}) => {
       <View nativeID={'searchbarContainer'} />
       <View>
         <Text style={styles.text}>
-          Welcome to Newtry! {'\n'}
+          Willkommen bei Newtry! {'\n'}
           {'\n'}
-          Try shopping the new way. {'\n'}
+          Probiere das Einkaufen auf eine neue Art und Weise. {'\n'}
           {'\n'}
-          Scan or search the products and you’ll see everything you need to know
-          💚
+          Scanne oder suche Produkte und du wirst alles herausfinden, was du
+          wissen musst. 💚
         </Text>
       </View>
     </View>
@@ -81,11 +81,13 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 22,
     padding: 40,
-    marginTop: '25%',
+    marginTop: '18%',
     paddingBottom: 5,
     fontWeight: '600',
+    fontFamily: 'Comfortaa',
   },
   searchbar: {
     padding: 2,
+    fontFamily: 'Comfortaa',
   },
 });

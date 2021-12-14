@@ -28,6 +28,10 @@
 		20F12D065BB44EFFA77341DE /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 23DDF6DD75144A9B91D54840 /* Octicons.ttf */; };
 		DA6B4A3E7D934830B0519C0C /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 549E376A1CD04BC38A514BC5 /* SimpleLineIcons.ttf */; };
 		251BCF2A8E5F4985A02D29A8 /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D310E3F6B39B480BA5C902C1 /* Zocial.ttf */; };
+		50AEB371DEC54D008C85567D /* MomcakeBold-WyonA.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2EEDCBBACDD24AC3B5838F69 /* MomcakeBold-WyonA.otf */; };
+		62203A72F9E6440C86EBB1E2 /* MomcakeThin-9Y6aZ.otf in Resources */ = {isa = PBXBuildFile; fileRef = E8FDFA37B1B94BF2A28A08E6 /* MomcakeThin-9Y6aZ.otf */; };
+		2922842DDC324AF0A6021DDB /* Comfortaa-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 45CE0EC9C86248F2BAA6C138 /* Comfortaa-VariableFont_wght.ttf */; };
+		16E182B00CD34A6A811AC530 /* Comfortaa.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F7D16C5AD24048C18E707B5C /* Comfortaa.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +72,10 @@
 		23DDF6DD75144A9B91D54840 /* Octicons.ttf */ = {isa = PBXFileReference; name = "Octicons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		549E376A1CD04BC38A514BC5 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; name = "SimpleLineIcons.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		D310E3F6B39B480BA5C902C1 /* Zocial.ttf */ = {isa = PBXFileReference; name = "Zocial.ttf"; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		2EEDCBBACDD24AC3B5838F69 /* MomcakeBold-WyonA.otf */ = {isa = PBXFileReference; name = "MomcakeBold-WyonA.otf"; path = "../src/assets/font/MomcakeBold-WyonA.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E8FDFA37B1B94BF2A28A08E6 /* MomcakeThin-9Y6aZ.otf */ = {isa = PBXFileReference; name = "MomcakeThin-9Y6aZ.otf"; path = "../src/assets/font/MomcakeThin-9Y6aZ.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		45CE0EC9C86248F2BAA6C138 /* Comfortaa-VariableFont_wght.ttf */ = {isa = PBXFileReference; name = "Comfortaa-VariableFont_wght.ttf"; path = "../src/assets/font/Comfortaa-VariableFont_wght.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F7D16C5AD24048C18E707B5C /* Comfortaa.ttf */ = {isa = PBXFileReference; name = "Comfortaa.ttf"; path = "../src/assets/font/Comfortaa.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +184,10 @@
 				23DDF6DD75144A9B91D54840 /* Octicons.ttf */,
 				549E376A1CD04BC38A514BC5 /* SimpleLineIcons.ttf */,
 				D310E3F6B39B480BA5C902C1 /* Zocial.ttf */,
+				2EEDCBBACDD24AC3B5838F69 /* MomcakeBold-WyonA.otf */,
+				E8FDFA37B1B94BF2A28A08E6 /* MomcakeThin-9Y6aZ.otf */,
+				45CE0EC9C86248F2BAA6C138 /* Comfortaa-VariableFont_wght.ttf */,
+				F7D16C5AD24048C18E707B5C /* Comfortaa.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -287,6 +299,10 @@
 				20F12D065BB44EFFA77341DE /* Octicons.ttf in Resources */,
 				DA6B4A3E7D934830B0519C0C /* SimpleLineIcons.ttf in Resources */,
 				251BCF2A8E5F4985A02D29A8 /* Zocial.ttf in Resources */,
+				50AEB371DEC54D008C85567D /* MomcakeBold-WyonA.otf in Resources */,
+				62203A72F9E6440C86EBB1E2 /* MomcakeThin-9Y6aZ.otf in Resources */,
+				2922842DDC324AF0A6021DDB /* Comfortaa-VariableFont_wght.ttf in Resources */,
+				16E182B00CD34A6A811AC530 /* Comfortaa.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,9 +14,9 @@ const SettingsScreen = () => {
     <View style={styles.container}>
       <Text style={styles.headline}>Login</Text>
 
-      <Text style={styles.text}>Username</Text>
+      <Text style={styles.username}>Benutzername</Text>
       <Searchbar value={value} updateSearch={updateSearch} />
-      <Text style={styles.text}>Password</Text>
+      <Text style={styles.password}>Passwort</Text>
       <Searchbar value={value} updateSearch={updateSearch} />
 
       <View
@@ -24,8 +24,8 @@ const SettingsScreen = () => {
         <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
       </View>
 
-      <Text style={styles.textPlan}>Plan</Text>
-      <Text style={styles.textPlan}>50/month</Text>
+      <Text style={styles.subTitle}>Abonnement</Text>
+      <Text style={styles.subTitle}>5€/Monat</Text>
 
       <View
         style={{
@@ -37,7 +37,17 @@ const SettingsScreen = () => {
         <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
       </View>
 
-      <Text style={styles.textPlan}>Language</Text>
+      <Text style={styles.subTitle}>Sprache</Text>
+      <View style={styles.language}>
+        <Image
+          style={styles.flag}
+          source={require('../../assets/germany.png')}
+        />
+        <Image
+          style={styles.flag}
+          source={require('../../assets/united-kingdom.png')}
+        />
+      </View>
     </View>
   );
 };
@@ -47,7 +57,6 @@ export default SettingsScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: '#EAFFFA',
     padding: 15,
@@ -61,17 +70,41 @@ const styles = StyleSheet.create({
     width: '100%',
     fontSize: 30,
     marginBottom: 25,
+    fontFamily: 'Comfortaa',
   },
-  text: {
+  username: {
     width: '100%',
     fontSize: 15,
     marginBottom: 3,
     marginLeft: 12,
+    marginTop: 25,
+    fontFamily: 'Comfortaa',
   },
-  textPlan: {
+  password: {
+    width: '100%',
+    fontSize: 15,
+    marginTop: -35,
+    marginBottom: 3,
+    marginLeft: 12,
+    fontFamily: 'Comfortaa',
+  },
+  subTitle: {
     width: '100%',
     fontSize: 20,
     marginBottom: 3,
+    marginLeft: 12,
+    fontFamily: 'Comfortaa',
+  },
+  language: {
+    marginTop: 25,
+    width: '80%',
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+  },
+  flag: {
+    width: 70,
+    height: 70,
+    marginRight: 25,
     marginLeft: 12,
   },
 });
