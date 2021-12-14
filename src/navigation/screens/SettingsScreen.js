@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {View, Text, Button, StyleSheet, Image, ViewBase} from 'react-native';
 
-import Searchbar from '../../components/Seachbar.component';
+import Searchbar from '../../components/TextInput.component';
 
 const SettingsScreen = () => {
   const [value, setValue] = useState();
