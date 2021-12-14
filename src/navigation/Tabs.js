@@ -13,7 +13,7 @@ function ScanTabBar({children, onPress}) {
   return (
     <TouchableOpacity
       style={{
-        top: -10,
+        top: '-5%',
         backgroundColor: '#60dbfd',
         borderRadius: 75,
         width: 150,
@@ -33,7 +33,7 @@ function Tabs() {
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 60,
+          height: 50,
           paddingHorizontal: 5,
           paddingTop: 0,
           backgroundColor: '#D7E1DF',

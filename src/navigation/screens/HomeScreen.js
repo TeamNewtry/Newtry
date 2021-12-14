@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SearchBar} from 'react-native-elements';
@@ -67,13 +68,20 @@ const HomeScreen = ({navigation, route}) => {
         inputStyle={{backgroundColor: '#60dbfd', color: 'black'}}
         containerStyle={{
           backgroundColor: '#60dbfd',
-          borderWidth: 1,
+          borderWidth: 0,
+          borderTopWidth: 0,
+          borderBottomWidth: 0,
           borderRadius: 35,
           width: '85%',
-          height: 67,
+          height: 47,
         }}
         style={styles.searchbar}
-        inputContainerStyle={{backgroundColor: '#60dbfd'}}
+        inputContainerStyle={{
+          backgroundColor: '#60dbfd',
+          marginLeft: 8,
+          width: '95%',
+          height: '100%',
+        }}
         value={searchQuery}
         onChangeText={setSearchQuery}
         onSubmitEditing={() => {
@@ -103,7 +111,7 @@ const HomeScreen = ({navigation, route}) => {
             <TableWrapper style={styles.wrapper}>
               <Rows
                 data={Object.values(tableData)}
-                flexArr={[1, 3, 1]}
+                flexArr={[1, 3, 2]}
                 resizeMode="contain"
                 style={styles.row}
               />
@@ -114,12 +122,12 @@ const HomeScreen = ({navigation, route}) => {
       <View>
         {renderIf(!searchTrue)(
           <Text style={styles.text}>
-            Welcome to Newtry! {'\n'}
+            Willkommen bei Newtry! {'\n'}
             {'\n'}
-            Try shopping the new way. {'\n'}
+            Probiere das Einkaufen auf eine neue Art und Weise. {'\n'}
             {'\n'}
-            Scan or search the products and you’ll see everything you need to
-            know 💚
+            Scanne oder suche Produkte und du wirst alles herausfinden was du
+            wissen musst. 💚
           </Text>,
         )}
       </View>
@@ -148,6 +156,11 @@ const styles = StyleSheet.create({
   },
   wrapper: {
     flexDirection: 'row',
+    backgroundColor: '#c7f6fb',
+    marginTop: -2,
+    width: '100%',
+    borderRadius: 35,
+    padding: 8,
   },
   row: {
     height: 50,
@@ -161,11 +174,11 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 22,
     padding: 40,
-    marginTop: '18%',
     paddingBottom: 5,
-    fontWeight: '600',
+    fontFamily: 'Comfortaa',
   },
   searchbar: {
     padding: 2,
+    fontFamily: 'Comfortaa',
   },
 });
