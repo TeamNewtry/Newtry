@@ -126,7 +126,7 @@ const HomeScreen = ({navigation, route}) => {
             {'\n'}
             Probiere das Einkaufen auf eine neue Art und Weise. {'\n'}
             {'\n'}
-            Scanne oder suche Produkte und du wirst alles herausfinden was du
+            Scanne oder Suche Produkte und du wirst alles herausfinden was du
             wissen musst. 💚
           </Text>,
         )}
@@ -158,7 +158,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     backgroundColor: '#c7f6fb',
     marginTop: -2,
-    width: '100%',
+    marginLeft: '-5%',
+    width: '110%',
     borderRadius: 35,
     padding: 8,
   },
