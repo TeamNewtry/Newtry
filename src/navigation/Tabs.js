@@ -79,8 +79,6 @@ function Tabs() {
             />
           ),
 
-          // Wenn ich diese function in diesem Projekt nicht auskommentiere gibt es ein RenderError
-
           tabBarButton: props => <ScanTabBar {...props} />,
         }}
       />
