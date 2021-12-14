@@ -1,17 +1,49 @@
 import React from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import {getProductByGTIN, searchProducts} from '../../CloudFunctionsWrapper';
 import {Table, TableWrapper, Row, Rows} from 'react-native-table-component';
+import renderIf from './../../components/renderif';
 
 const HomeScreen = ({navigation, route}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
   const [tableData, setTableData] = React.useState([
-    '',
-    'Keine Ergebnisse gefunden',
-    '',
+    ['', 'Keine Ergebnisse gefunden', ''],
   ]);
+  const [searchTrue, setSearchTrue] = React.useState(false);
 
+  const elementButton = (value, gtin) => (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('ProductView', {gtin: gtin});
+        setTimeout(function () {
+          resetScreen();
+        }, 50);
+      }}>
+      <View>
+        <Text>{value}</Text>
+      </View>
+    </TouchableOpacity>
+  );
+
+  const pictureButton = (value, gtin) => (
+    <TouchableOpacity
+      onPress={() => {
+        navigation.navigate('ProductView', {gtin: gtin});
+        setTimeout(function () {
+          resetScreen();
+        }, 50);
+      }}>
+      <View>
+        <Image style={styles.buttonImage} source={{uri: value}} />
+      </View>
+    </TouchableOpacity>
+  );
+  const resetScreen = () => {
+    setSearchTrue(false);
+    setTableData([['', 'Keine Ergebnisse gefunden', '']]);
+    setSearchQuery('');
+  };
   const updateSearchEntries = async query => {
     const productIds = await searchProducts({gtinOrName: query});
     if (productIds.length > 0) {
@@ -19,7 +51,7 @@ const HomeScreen = ({navigation, route}) => {
         productIds.map(async item => {
           return await getProductByGTIN({gtin: item});
         }),
-        navigation.navigate('ProductView', {gtin: productIds[0]}),
+        // navigation.navigate('ProductView', {gtin: productIds[0]}),
       );
 
       // navigation.navigate('ProductView', {gtin: productIds[2]})
@@ -45,10 +77,15 @@ const HomeScreen = ({navigation, route}) => {
         value={searchQuery}
         onChangeText={setSearchQuery}
         onSubmitEditing={() => {
+          setSearchTrue(true);
           updateSearchEntries(searchQuery)
             .then(result => {
               const r = result.map(res => {
-                return [res.pictures.toString(), res.name, res.gtin];
+                return [
+                  pictureButton(res.pictures.toString(), res.gtin),
+                  elementButton(res.name, res.gtin),
+                  elementButton(res.gtin, res.gtin),
+                ];
               });
               setTableData(r);
             })
@@ -60,27 +97,31 @@ const HomeScreen = ({navigation, route}) => {
         placeholder={'Search for products'}
       />
 
-      <View>
-        <Table borderStyle={{borderWidth: 1, borderColor: 'black'}}>
-          <TableWrapper style={styles.wrapper}>
-            {/*<Rows*/}
-            {/*  data={[['1', '2', '3']]}*/}
-            {/*  flexArr={[1, 3, 1]}*/}
-            {/*  resizeMode="contain"*/}
-            {/*  style={styles.row}*/}
-            {/*/>*/}
-          </TableWrapper>
-        </Table>
+      <View name={'searchTable'}>
+        {renderIf(searchTrue)(
+          <Table style={styles.table}>
+            <TableWrapper style={styles.wrapper}>
+              <Rows
+                data={Object.values(tableData)}
+                flexArr={[1, 3, 1]}
+                resizeMode="contain"
+                style={styles.row}
+              />
+            </TableWrapper>
+          </Table>,
+        )}
       </View>
       <View>
-        <Text style={styles.text}>
-          Welcome to Newtry! {'\n'}
-          {'\n'}
-          Try shopping the new way. {'\n'}
-          {'\n'}
-          Scan or search the products and you’ll see everything you need to know
-          💚
-        </Text>
+        {renderIf(!searchTrue)(
+          <Text style={styles.text}>
+            Welcome to Newtry! {'\n'}
+            {'\n'}
+            Try shopping the new way. {'\n'}
+            {'\n'}
+            Scan or search the products and you’ll see everything you need to
+            know 💚
+          </Text>,
+        )}
       </View>
     </View>
   );
@@ -95,8 +136,22 @@ const styles = StyleSheet.create({
     backgroundColor: '#EAFFFA',
     justifyContent: 'flex-start',
   },
-  wrapper: {flexDirection: 'row'},
-  row: {height: 40},
+  table: {
+    padding: 2,
+    width: 300,
+  },
+  buttonImage: {
+    width: 45,
+    height: 45,
+    overflow: 'hidden',
+    resizeMode: 'contain',
+  },
+  wrapper: {
+    flexDirection: 'row',
+  },
+  row: {
+    height: 50,
+  },
   logo: {
     height: 200,
     width: 300,

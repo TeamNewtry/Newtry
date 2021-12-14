@@ -28,7 +28,6 @@ const ProductView = ({navigation, route}) => {
     gtin: route.params.gtin,
   });
   if (typeof data !== 'undefined') {
-    console.log(JSON.stringify(data));
     const tableHead = [' Average nutritional values', ' per 100g'];
     const nut = data.nutrition;
     const tableData = [
