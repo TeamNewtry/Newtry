@@ -16,10 +16,11 @@ import {Icon} from 'react-native-elements';
 import {ArrowLeftOutlined} from '@ant-design/icons';
 
 const splitIngredients = ingredients => {
-  const regex = /([^,(]+(\(.*?\)+)?)/;
+  const regex = /[^,([]+([([].*?[)\]]+)?/g;
   const results = [...ingredients.matchAll(regex)];
-  // map to first capturing group
-  return results.map(result => result[0]);
+  return results
+    .map(result => result[0].trim())
+    .filter(result => result.length > 1);
 };
 
 const ProductView = ({navigation, route}) => {
