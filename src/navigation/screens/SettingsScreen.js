@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, Button, StyleSheet, Image, ViewBase} from 'react-native';
+import {View, Text, Button, StyleSheet, Image, ScrollView} from 'react-native';
 
 import Searchbar from '../../components/TextInput.component';
 
@@ -12,42 +12,48 @@ const SettingsScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.headline}>Login</Text>
+      <ScrollView>
+        <Text style={styles.headline}>Login</Text>
 
-      <Text style={styles.username}>Benutzername</Text>
-      <Searchbar value={value} updateSearch={updateSearch} />
-      <Text style={styles.password}>Passwort</Text>
-      <Searchbar value={value} updateSearch={updateSearch} />
+        <Text style={styles.username}>Benutzername</Text>
+        <Searchbar value={value} updateSearch={updateSearch} />
+        <Text style={styles.password}>Passwort</Text>
+        <Searchbar value={value} updateSearch={updateSearch} />
 
-      <View
-        style={{flexDirection: 'row', alignItems: 'center', marginBottom: 20}}>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-      </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 20,
+          }}>
+          <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        </View>
 
-      <Text style={styles.subTitle}>Abonnement</Text>
-      <Text style={styles.subTitle}>5€/Monat</Text>
+        <Text style={styles.subTitle}>Abonnement</Text>
+        <Text style={styles.subTitle}>5€/Monat</Text>
 
-      <View
-        style={{
-          flexDirection: 'row',
-          alignItems: 'center',
-          marginBottom: 20,
-          marginTop: 20,
-        }}>
-        <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-      </View>
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginBottom: 20,
+            marginTop: 20,
+          }}>
+          <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
+        </View>
 
-      <Text style={styles.subTitle}>Sprache</Text>
-      <View style={styles.language}>
-        <Image
-          style={styles.flag}
-          source={require('../../assets/germany.png')}
-        />
-        <Image
-          style={styles.flag}
-          source={require('../../assets/united-kingdom.png')}
-        />
-      </View>
+        <Text style={styles.subTitle}>Sprache</Text>
+        <View style={styles.language}>
+          <Image
+            style={styles.flag}
+            source={require('../../assets/germany.png')}
+          />
+          <Image
+            style={styles.flag}
+            source={require('../../assets/united-kingdom.png')}
+          />
+        </View>
+      </ScrollView>
     </View>
   );
 };

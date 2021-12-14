@@ -117,7 +117,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 22,
     padding: 40,
-    marginTop: '18%',
     paddingBottom: 5,
     fontWeight: '600',
     fontFamily: 'Comfortaa',
