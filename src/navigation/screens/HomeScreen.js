@@ -8,9 +8,7 @@ import renderIf from './../../components/renderif';
 
 const HomeScreen = ({navigation, route}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [tableData, setTableData] = React.useState([
-    ['', 'Keine Ergebnisse gefunden', ''],
-  ]);
+  const [tableData, setTableData] = React.useState([['', 'Lädt...', '']]);
   const [searchTrue, setSearchTrue] = React.useState(false);
 
   const elementButton = (value, gtin) => (
@@ -42,21 +40,16 @@ const HomeScreen = ({navigation, route}) => {
   );
   const resetScreen = () => {
     setSearchTrue(false);
-    setTableData([['', 'Keine Ergebnisse gefunden', '']]);
+    setTableData([['', 'Lädt...', '']]);
     setSearchQuery('');
   };
   const updateSearchEntries = async query => {
     const productIds = await searchProducts({gtinOrName: query});
-    if (productIds.length > 0) {
-      return await Promise.all(
-        productIds.map(async item => {
-          return await getProductByGTIN({gtin: item});
-        }),
-        // navigation.navigate('ProductView', {gtin: productIds[0]}),
-      );
-
-      // navigation.navigate('ProductView', {gtin: productIds[2]})
-    }
+    return await Promise.all(
+      productIds.map(async item => {
+        return await getProductByGTIN({gtin: item});
+      }),
+    );
   };
   return (
     <View style={styles.container}>
@@ -97,10 +90,9 @@ const HomeScreen = ({navigation, route}) => {
               });
               setTableData(r);
             })
-            .catch(error =>
-              //code: not found
-              console.error('Error in updateSearchEntries:', error),
-            );
+            .catch(error => {
+              setTableData([['', 'Keine Ergebnisse gefunden', '']]);
+            });
         }}
         placeholder={'Produkt suchen...'}
       />
