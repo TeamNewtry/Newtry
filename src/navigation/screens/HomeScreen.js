@@ -102,7 +102,7 @@ const HomeScreen = ({navigation, route}) => {
               console.error('Error in updateSearchEntries:', error),
             );
         }}
-        placeholder={'Search for products'}
+        placeholder={'Produkt suchen...'}
       />
 
       <View name={'searchTable'}>

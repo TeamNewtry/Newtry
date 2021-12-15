@@ -28,16 +28,16 @@ const ProductView = ({navigation, route}) => {
     gtin: route.params.gtin,
   });
   if (typeof data !== 'undefined') {
-    const tableHead = [' Average nutritional values', ' per 100g'];
+    const tableHead = [' Durchschnittliche Nährwerte', ' pro 100g'];
     const nut = data.nutrition;
     const tableData = [
-      [' Calories', ` ${nut.calories} kcal`],
-      [' Total Fat', ` ${nut.totalFat} g`],
-      [' Saturated Fat', ` ${nut.saturatedFat} g`],
-      [' Carbohydrates', ` ${nut.carbohydrates} g`],
-      [' Total sugar', ` ${nut.sugar} g`],
+      [' Kalorien', ` ${nut.calories} kcal`],
+      [' Fett', ` ${nut.totalFat} g`],
+      [' Gesättigte Fettsäuren', ` ${nut.saturatedFat} g`],
+      [' Kohlenhydrate', ` ${nut.carbohydrates} g`],
+      [' Zucker', ` ${nut.sugar} g`],
       [' Protein', ` ${nut.protein} g`],
-      [' Salt', ` ${nut.salt} g`],
+      [' Salz', ` ${nut.salt} g`],
     ];
 
     return (
@@ -87,7 +87,7 @@ const ProductView = ({navigation, route}) => {
               </Table>
             </View>
             <View>
-              <Text style={styles.title}>Ingredients:</Text>
+              <Text style={styles.title}>Zutaten:</Text>
               {splitIngredients(data.ingredients).map(element => {
                 return (
                   <Unorderedlist key={element}>
