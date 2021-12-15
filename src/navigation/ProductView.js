@@ -1,21 +1,13 @@
-import React, {useEffect} from 'react';
-import {View, Text, Button, StyleSheet, Image, ScrollView} from 'react-native';
-import {
-  Table,
-  TableWrapper,
-  Row,
-  Rows,
-  Col,
-  Cols,
-  Cell,
-} from 'react-native-table-component';
+import React from 'react';
+import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
+import {Row, Rows, Table, TableWrapper,} from 'react-native-table-component';
 import Unorderedlist from 'react-native-unordered-list';
 import {useAsync} from 'react-async';
 import {getProductByGTIN} from '../CloudFunctionsWrapper';
 import {Icon} from 'react-native-elements';
-import {ArrowLeftOutlined} from '@ant-design/icons';
 
 const splitIngredients = ingredients => {
+  ingredients = ingredients ?? '';
   const regex = /[^,([]+([([].*?[)\]]+)?/g;
   const results = [...ingredients.matchAll(regex)];
   return results
