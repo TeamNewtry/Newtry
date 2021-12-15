@@ -78,6 +78,7 @@ const HomeScreen = ({navigation, route}) => {
         value={searchQuery}
         onChangeText={setSearchQuery}
         onSubmitEditing={() => {
+          setTableData([['', 'Lädt...', '']]);
           setSearchTrue(true);
           updateSearchEntries(searchQuery)
             .then(result => {
