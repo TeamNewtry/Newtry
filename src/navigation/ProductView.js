@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Row, Rows, Table, TableWrapper,} from 'react-native-table-component';
+import {Row, Rows, Table, TableWrapper} from 'react-native-table-component';
 import Unorderedlist from 'react-native-unordered-list';
 import {useAsync} from 'react-async';
 import {getProductByGTIN} from '../CloudFunctionsWrapper';
 import {Icon} from 'react-native-elements';
+import {LocalizationContext} from '../components/Translations';
 
 const splitIngredients = ingredients => {
   ingredients = ingredients ?? '';
@@ -16,20 +17,24 @@ const splitIngredients = ingredients => {
 };
 
 const ProductView = ({navigation, route}) => {
+  const {translations} = useContext(LocalizationContext);
   const {data, error} = useAsync(getProductByGTIN, {
     gtin: route.params.gtin,
   });
   if (typeof data !== 'undefined') {
-    const tableHead = [' Durchschnittliche Nährwerte', ' pro 100g'];
+    const tableHead = [
+      translations['nutrition.table.header1'],
+      translations['nutrition.table.header2'],
+    ];
     const nut = data.nutrition;
     const tableData = [
-      [' Kalorien', ` ${nut.calories} kcal`],
-      [' Fett', ` ${nut.totalFat} g`],
-      [' Gesättigte Fettsäuren', ` ${nut.saturatedFat} g`],
-      [' Kohlenhydrate', ` ${nut.carbohydrates} g`],
-      [' Zucker', ` ${nut.sugar} g`],
-      [' Protein', ` ${nut.protein} g`],
-      [' Salz', ` ${nut.salt} g`],
+      [translations['nutrition.table.field1'], ` ${nut.calories} kcal`],
+      [translations['nutrition.table.field2'], ` ${nut.totalFat} g`],
+      [translations['nutrition.table.field3'], ` ${nut.saturatedFat} g`],
+      [translations['nutrition.table.field4'], ` ${nut.carbohydrates} g`],
+      [translations['nutrition.table.field5'], ` ${nut.sugar} g`],
+      [translations['nutrition.table.field6'], ` ${nut.protein} g`],
+      [translations['nutrition.table.field7'], ` ${nut.salt} g`],
     ];
 
     return (
@@ -79,7 +84,9 @@ const ProductView = ({navigation, route}) => {
               </Table>
             </View>
             <View>
-              <Text style={styles.title}>Zutaten:</Text>
+              <Text style={styles.title}>
+                {translations['nutrition.ingredients.header']}
+              </Text>
               {splitIngredients(data.ingredients).map(element => {
                 return (
                   <Unorderedlist key={element}>
