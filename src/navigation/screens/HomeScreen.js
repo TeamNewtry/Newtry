@@ -1,15 +1,19 @@
-/* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import {getProductByGTIN, searchProducts} from '../../CloudFunctionsWrapper';
-import {Table, TableWrapper, Row, Rows} from 'react-native-table-component';
-import renderIf from './../../components/renderif';
+import {Table, TableWrapper, Rows} from 'react-native-table-component';
+import RenderIf from '../../components/Renderif';
+import {LocalizationContext} from '../../components/Translations';
 
 const HomeScreen = ({navigation, route}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
-  const [tableData, setTableData] = React.useState([['', 'Lädt...', '']]);
   const [searchTrue, setSearchTrue] = React.useState(false);
+  const {translations, initializeAppLanguage} = useContext(LocalizationContext);
+  initializeAppLanguage();
+  const [tableData, setTableData] = React.useState([
+    ['', translations['searchbar.loading.text'], ''],
+  ]);
 
   const elementButton = (value, gtin) => (
     <TouchableOpacity
@@ -24,6 +28,26 @@ const HomeScreen = ({navigation, route}) => {
       </View>
     </TouchableOpacity>
   );
+
+  const submitData = () => {
+    setTableData([['', translations['searchbar.loading.text'], '']]);
+    setSearchTrue(true);
+    updateSearchEntries(searchQuery)
+      .then(result => {
+        const r = result.map(res => {
+          return [
+            pictureButton(res.pictures.toString(), res.gtin),
+            elementButton(res.name, res.gtin),
+            elementButton(res.gtin, res.gtin),
+          ];
+        });
+        setTableData(r);
+      })
+      .catch(error => {
+        setTableData([['', translations['searchbar.error.text'], '']]);
+        console.log(`Error: ${error}`);
+      });
+  };
 
   const pictureButton = (value, gtin) => (
     <TouchableOpacity
@@ -40,7 +64,7 @@ const HomeScreen = ({navigation, route}) => {
   );
   const resetScreen = () => {
     setSearchTrue(false);
-    setTableData([['', 'Lädt...', '']]);
+    setTableData([['', translations['searchbar.loading.text'], '']]);
     setSearchQuery('');
   };
   const updateSearchEntries = async query => {
@@ -58,48 +82,18 @@ const HomeScreen = ({navigation, route}) => {
         source={require('../../assets/logo_large.png')}
       />
       <SearchBar
-        inputStyle={{backgroundColor: '#60dbfd', color: 'black'}}
-        containerStyle={{
-          backgroundColor: '#60dbfd',
-          borderWidth: 0,
-          borderTopWidth: 0,
-          borderBottomWidth: 0,
-          borderRadius: 35,
-          width: '85%',
-          height: 47,
-        }}
+        inputStyle={styles.searchbarInput}
+        containerStyle={styles.searchbarContainer}
         style={styles.searchbar}
-        inputContainerStyle={{
-          backgroundColor: '#60dbfd',
-          marginLeft: 8,
-          width: '95%',
-          height: '100%',
-        }}
+        inputContainerStyle={styles.searchbarInputContainer}
         value={searchQuery}
         onChangeText={setSearchQuery}
-        onSubmitEditing={() => {
-          setTableData([['', 'Lädt...', '']]);
-          setSearchTrue(true);
-          updateSearchEntries(searchQuery)
-            .then(result => {
-              const r = result.map(res => {
-                return [
-                  pictureButton(res.pictures.toString(), res.gtin),
-                  elementButton(res.name, res.gtin),
-                  elementButton(res.gtin, res.gtin),
-                ];
-              });
-              setTableData(r);
-            })
-            .catch(error => {
-              setTableData([['', 'Keine Ergebnisse gefunden', '']]);
-            });
-        }}
-        placeholder={'Produkt suchen...'}
+        onSubmitEditing={submitData}
+        placeholder={translations['searchbar.placeholder']}
       />
 
       <View name={'searchTable'}>
-        {renderIf(searchTrue)(
+        {RenderIf(searchTrue)(
           <Table style={styles.table}>
             <TableWrapper style={styles.wrapper}>
               <Rows
@@ -113,15 +107,8 @@ const HomeScreen = ({navigation, route}) => {
         )}
       </View>
       <View>
-        {renderIf(!searchTrue)(
-          <Text style={styles.text}>
-            Willkommen bei Newtry! {'\n'}
-            {'\n'}
-            Probiere das Einkaufen auf eine neue Art und Weise. {'\n'}
-            {'\n'}
-            Scanne oder Suche Produkte und du wirst alles herausfinden was du
-            wissen musst. 💚
-          </Text>,
+        {RenderIf(!searchTrue)(
+          <Text style={styles.text}>{translations['homeScreen.text']}</Text>,
         )}
       </View>
     </View>
@@ -146,6 +133,22 @@ const styles = StyleSheet.create({
     height: 45,
     overflow: 'hidden',
     resizeMode: 'contain',
+  },
+  searchbarInput: {backgroundColor: '#60dbfd', color: 'black'},
+  searchbarContainer: {
+    backgroundColor: '#60dbfd',
+    borderWidth: 0,
+    borderTopWidth: 0,
+    borderBottomWidth: 0,
+    borderRadius: 35,
+    width: '85%',
+    height: 47,
+  },
+  searchbarInputContainer: {
+    backgroundColor: '#60dbfd',
+    marginLeft: 8,
+    width: '95%',
+    height: '100%',
   },
   wrapper: {
     flexDirection: 'row',

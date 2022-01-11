@@ -1,59 +1,57 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import {View, Text, Button, StyleSheet, Image, ScrollView} from 'react-native';
-
+import {Avatar, ListItem, Icon} from 'react-native-elements';
 import Searchbar from '../../components/TextInput.component';
+import {LocalizationContext} from '../../components/Translations';
 
 const SettingsScreen = () => {
   const [value, setValue] = useState();
-  function updateSearch(value) {
+  function updateSearch(val) {
     //search logic or anything
-    console.log(value);
+    console.log(val);
   }
-
+  const {translations, appLanguage, setAppLanguage} =
+    useContext(LocalizationContext);
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <Text style={styles.headline}>Login</Text>
+      <Text style={styles.headline}>{translations['settings.login.text']}</Text>
 
-        <Text style={styles.username}>Benutzername</Text>
-        <Searchbar value={value} updateSearch={updateSearch} />
-        <Text style={styles.password}>Passwort</Text>
-        <Searchbar value={value} updateSearch={updateSearch} />
+      <Text style={styles.username}>{translations['settings.username']}</Text>
+      <Searchbar value={value} updateSearch={updateSearch} />
+      <Text style={styles.password}>{translations['settings.password']}</Text>
+      <Searchbar value={value} updateSearch={updateSearch} />
 
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginBottom: 20,
-          }}>
-          <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-        </View>
+      <View style={styles.topSeparator} />
 
-        <Text style={styles.subTitle}>Abonnement</Text>
-        <Text style={styles.subTitle}>5€/Monat</Text>
+      <Text style={styles.subTitle}>
+        {translations['settings.subscription']}
+      </Text>
+      <Text style={styles.subTitle}>
+        {translations['settings.paymentPlan']}
+      </Text>
 
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginBottom: 20,
-            marginTop: 20,
-          }}>
-          <View style={{flex: 1, height: 1, backgroundColor: 'black'}} />
-        </View>
+      <View style={styles.bottomSeparator} />
 
-        <Text style={styles.subTitle}>Sprache</Text>
-        <View style={styles.language}>
-          <Image
-            style={styles.flag}
-            source={require('../../assets/germany.png')}
-          />
-          <Image
-            style={styles.flag}
-            source={require('../../assets/united-kingdom.png')}
-          />
-        </View>
-      </ScrollView>
+      <View>
+        <Text h4 h4Style={styles.language}>
+          {translations['settings.change_language']}
+        </Text>
+        {translations.getAvailableLanguages().map((currentLang, i) => (
+          <ListItem
+            key={i}
+            bottomDivider
+            onPress={() => {
+              setAppLanguage(currentLang);
+            }}>
+            <ListItem.Content>
+              <ListItem.Title>{currentLang}</ListItem.Title>
+            </ListItem.Content>
+            {appLanguage === currentLang ? (
+              <Icon name="check" size={20} />
+            ) : null}
+          </ListItem>
+        ))}
+      </View>
     </View>
   );
 };
@@ -67,6 +65,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#EAFFFA',
     padding: 15,
     paddingTop: 35,
+    textAlign: 'center',
   },
   loginContainer: {
     alignItems: 'center',
@@ -77,6 +76,21 @@ const styles = StyleSheet.create({
     fontSize: 30,
     marginBottom: 25,
     fontFamily: 'Comfortaa',
+  },
+  topSeparator: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+  },
+  bottomSeparator: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 20,
+    marginTop: 20,
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
   },
   username: {
     width: '100%',
@@ -103,6 +117,7 @@ const styles = StyleSheet.create({
   },
   language: {
     marginTop: 25,
+    marginBottom: 25,
     width: '80%',
     flexDirection: 'row',
     alignItems: 'flex-start',
