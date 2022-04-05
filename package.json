@@ -5,12 +5,13 @@
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
-    "start": "react-native start",
+    "start": "react-native start --port 4269",
     "test": "jest",
     "lint": "eslint ."
   },
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
+    "@react-native-community/async-storage": "^1.12.1",
     "@react-native-firebase/app": "^13.1.0",
     "@react-native-firebase/firestore": "^13.1.0",
     "@react-native-firebase/functions": "^13.1.0",
@@ -21,6 +22,8 @@
     "react-native": "^0.66.3",
     "react-native-camera": "^4.2.1",
     "react-native-elements": "^3.4.2",
+    "react-native-localization": "^2.1.7",
+    "react-native-localize": "^2.1.7",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
     "react-native-unordered-list": "^1.0.4",

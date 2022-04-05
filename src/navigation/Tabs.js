@@ -1,4 +1,3 @@
-/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {View, Image, StyleSheet, TouchableOpacity} from 'react-native';
@@ -13,8 +12,8 @@ function ScanTabBar({children, onPress}) {
   return (
     <TouchableOpacity
       style={{
-        top: -10,
-        backgroundColor: '#00C2FF',
+        top: '-5%',
+        backgroundColor: '#60dbfd',
         borderRadius: 75,
         width: 150,
         height: 150,
@@ -33,7 +32,7 @@ function Tabs() {
       screenOptions={({route}) => ({
         tabBarShowLabel: false,
         tabBarStyle: {
-          height: 60,
+          height: 50,
           paddingHorizontal: 5,
           paddingTop: 0,
           backgroundColor: '#D7E1DF',
@@ -78,8 +77,6 @@ function Tabs() {
               }}
             />
           ),
-
-          // Wenn ich diese function in diesem Projekt nicht auskommentiere gibt es ein RenderError
 
           tabBarButton: props => <ScanTabBar {...props} />,
         }}

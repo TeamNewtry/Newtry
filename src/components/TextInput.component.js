@@ -16,7 +16,7 @@ export default function Searchbar({value, updateSearch, style}) {
       <View style={styles.searchContainer}>
         <TextInput
           value={query}
-          placeholder="Search item..."
+          placeholder=""
           style={styles.textInput}
           onChangeText={text => {
             var letters = /^$|^[a-zA-Z._\b ]+$/;
@@ -61,9 +61,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textInput: {
-    backgroundColor: '#00C2FF',
+    backgroundColor: '#60dbfd',
     flex: 1,
     borderRadius: 15,
+    fontFamily: 'Comfortaa',
   },
 
   vwSearch: {
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     width: 15,
   },
   searchContainer: {
-    backgroundColor: '#00C2FF',
+    backgroundColor: '#60dbfd',
     width: '100%',
     height: 35,
     flexDirection: 'row',
