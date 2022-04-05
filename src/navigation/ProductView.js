@@ -39,19 +39,19 @@ const ProductView = ({navigation, route}) => {
 
     return (
       <View style={styles.container}>
+        <View style={styles.backArrow}>
+          <Icon
+            name={'arrow-back'}
+            size={20}
+            reverse={true}
+            type={'ionicons'}
+            onPress={() => navigation.navigate('HomeScreen', {route})}
+            reverseColor={'black'}
+            color={'transparent'}
+          />
+        </View>
         <ScrollView>
           <View style={styles.imageBorder}>
-            <View>
-              <Icon
-                name={'arrow-left'}
-                size={20}
-                reverse={true}
-                type={'font-awesome'}
-                onPress={() => navigation.navigate('HomeScreen', {route})}
-                reverseColor={'black'}
-                color={'transparent'}
-              />
-            </View>
             <Image
               source={{uri: data.pictures.toString()}}
               style={styles.image}
@@ -107,8 +107,14 @@ const ProductView = ({navigation, route}) => {
 export default ProductView;
 
 const styles = StyleSheet.create({
-  container: {flex: 1, backgroundColor: '#EAFFFA'},
-  head: {height: 40, backgroundColor: '#f1f8ff'},
+  container: {
+    flex: 1,
+    backgroundColor: '#EAFFFA',
+  },
+  head: {
+    height: 40,
+    backgroundColor: '#f1f8ff',
+  },
   wrapper: {
     flexDirection: 'row',
   },
@@ -126,6 +132,7 @@ const styles = StyleSheet.create({
     width: window.outerWidth,
     height: 400,
     resizeMode: 'contain',
+    backgroundColor: 'rgb(246, 246, 247)',
   },
   description: {
     fontSize: 14,
@@ -143,5 +150,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 3,
     borderBottomColor: '#03936f',
     paddingBottom: 0,
+  },
+  backArrow: {
+    position: 'absolute',
+    zIndex: 10,
   },
 });
