@@ -6,6 +6,7 @@ import {useAsync} from 'react-async';
 import {getProductByGTIN} from '../CloudFunctionsWrapper';
 import {Icon} from 'react-native-elements';
 import {LocalizationContext} from '../components/Translations';
+import LinearGradient from 'react-native-linear-gradient';
 
 const splitIngredients = ingredients => {
   ingredients = ingredients ?? '';
@@ -47,7 +48,7 @@ const ProductView = ({navigation, route}) => {
             type={'ionicons'}
             onPress={() => navigation.navigate('HomeScreen', {route})}
             reverseColor={'black'}
-            color={'transparent'}
+            color={'#EAFFFA'}
           />
         </View>
         <ScrollView>
@@ -55,6 +56,12 @@ const ProductView = ({navigation, route}) => {
             <Image
               source={{uri: data.pictures.toString()}}
               style={styles.image}
+            />
+            <LinearGradient
+              start={{x: 1, y: 0}}
+              end={{x: 0, y: 0}}
+              colors={['#24FF00', '#00D8D4', '#60dbfd']}
+              style={styles.line}
             />
           </View>
           <View style={styles.padding}>
@@ -146,13 +153,13 @@ const styles = StyleSheet.create({
   padding: {
     padding: 20,
   },
-  imageBorder: {
-    borderBottomWidth: 3,
-    borderBottomColor: '#03936f',
-    paddingBottom: 0,
+  line: {
+    height: 3,
   },
   backArrow: {
     position: 'absolute',
     zIndex: 10,
+    top: 5,
+    left: 5,
   },
 });
