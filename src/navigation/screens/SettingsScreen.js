@@ -3,25 +3,92 @@ import {View, Text, Button, StyleSheet, Image, ScrollView} from 'react-native';
 import {Avatar, ListItem, Icon} from 'react-native-elements';
 import Searchbar from '../../components/TextInput.component';
 import {LocalizationContext} from '../../components/Translations';
+import {AuthContext} from '../../components/Authentication';
+import auth from '@react-native-firebase/auth';
+import {
+  GoogleSignin,
+  GoogleSigninButton,
+} from '@react-native-google-signin/google-signin';
+
+const LoginView = () => {
+  const [signingIn, setSigningIn] = useState(false);
+  const {translations} = useContext(LocalizationContext);
+  const {user, setUser} = useContext(AuthContext);
+
+  const onGoogleSignIn = async () => {
+    setSigningIn(true);
+    console.log('Signing in with Google...');
+    try {
+      const {idToken} = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+      const userCredential = await auth().signInWithCredential(
+        googleCredential,
+      );
+      setUser(userCredential.user);
+      console.log('Signed in with Google!');
+      console.log(userCredential);
+    } catch (ex) {
+      console.log('Error on Google Sign-in:');
+      console.log(ex);
+    }
+    setSigningIn(false);
+  };
+
+  const onGithubSignIn = () => {
+    return null;
+  };
+
+  const onLogout = () => {
+    console.log('Signing out...');
+    auth().signOut();
+    console.log('Signed out!');
+  };
+
+  if (!user) {
+    // show login buttons
+    return (
+      <GoogleSigninButton
+        style={{width: 192, height: 48}}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={onGoogleSignIn}
+        disabled={signingIn}
+      />
+    );
+  } else {
+    // show login info
+    return (
+      <View>
+        <Text style={styles.subTitle}>
+          {`${translations['settings.login.status']} ${user.displayName} (${user.email})`}
+        </Text>
+        <Button
+          title={translations['settings.login.logout']}
+          onPress={onLogout}
+        />
+      </View>
+    );
+  }
+};
 
 const SettingsScreen = () => {
   const [value, setValue] = useState();
+
   function updateSearch(val) {
     //search logic or anything
     console.log(val);
   }
+
   const {translations, appLanguage, setAppLanguage} =
     useContext(LocalizationContext);
+
   return (
     <View style={styles.container}>
       <Text style={styles.headline}>{translations['settings.login.text']}</Text>
 
-      <Text style={styles.username}>{translations['settings.username']}</Text>
-      <Searchbar value={value} updateSearch={updateSearch} />
-      <Text style={styles.password}>{translations['settings.password']}</Text>
-      <Searchbar value={value} updateSearch={updateSearch} />
+      {LoginView()}
 
-      <View style={styles.topSeparator} />
+      <View style={styles.separator} />
 
       <Text style={styles.subTitle}>
         {translations['settings.subscription']}
@@ -30,7 +97,7 @@ const SettingsScreen = () => {
         {translations['settings.paymentPlan']}
       </Text>
 
-      <View style={styles.bottomSeparator} />
+      <View style={styles.separator} />
 
       <View>
         <Text h4 h4Style={styles.language}>
@@ -77,36 +144,13 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     fontFamily: 'Comfortaa',
   },
-  topSeparator: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-  },
-  bottomSeparator: {
+  separator: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
     marginTop: 20,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-  },
-  username: {
-    width: '100%',
-    fontSize: 15,
-    marginBottom: 3,
-    marginLeft: 12,
-    marginTop: 25,
-    fontFamily: 'Comfortaa',
-  },
-  password: {
-    width: '100%',
-    fontSize: 15,
-    marginTop: -35,
-    marginBottom: 3,
-    marginLeft: 12,
-    fontFamily: 'Comfortaa',
   },
   subTitle: {
     width: '100%',
@@ -121,11 +165,5 @@ const styles = StyleSheet.create({
     width: '80%',
     flexDirection: 'row',
     alignItems: 'flex-start',
-  },
-  flag: {
-    width: 70,
-    height: 70,
-    marginRight: 25,
-    marginLeft: 12,
   },
 });
