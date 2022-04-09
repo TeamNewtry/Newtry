@@ -20,17 +20,13 @@ const LoginView = () => {
     console.log('Signing in with Google...');
     try {
       const {idToken} = await GoogleSignin.signIn();
-      console.log('ID-Token:');
-      console.log(idToken);
       const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-      console.log('Google-Cred:');
-      console.log(googleCredential);
       const userCredential = await auth().signInWithCredential(
         googleCredential,
       );
       setUser(userCredential.user);
       console.log('Signed in with Google!');
-      console.log(user);
+      console.log(userCredential);
     } catch (ex) {
       console.log('Error on Google Sign-in:');
       console.log(ex);
@@ -51,32 +47,20 @@ const LoginView = () => {
   if (!user) {
     // show login buttons
     return (
-      <View>
-        <GoogleSigninButton
-          style={{width: 192, height: 48}}
-          size={GoogleSigninButton.Size.Wide}
-          color={GoogleSigninButton.Color.Dark}
-          onPress={onGoogleSignIn}
-          disabled={signingIn}
-        />
-        <Button
-          title={translations['settings.login.github']}
-          onPress={onGithubSignIn}
-        />
-      </View>
+      <GoogleSigninButton
+        style={{width: 192, height: 48}}
+        size={GoogleSigninButton.Size.Wide}
+        color={GoogleSigninButton.Color.Dark}
+        onPress={onGoogleSignIn}
+        disabled={signingIn}
+      />
     );
   } else {
     // show login info
     return (
       <View>
         <Text style={styles.subTitle}>
-          {`${translations['settings.login.status']} ${user.providerId}: ${user.displayName} (${user.email})`}
-        </Text>
-        <Text style={styles.subTitle}>
-          {`${translations['settings.login.email_verified']} ${user.emailVerified}`}
-        </Text>
-        <Text style={styles.subTitle}>
-          {`${translations['settings.login.anonymous']} ${user.isAnonymous}`}
+          {`${translations['settings.login.status']} ${user.displayName} (${user.email})`}
         </Text>
         <Button
           title={translations['settings.login.logout']}
@@ -104,7 +88,7 @@ const SettingsScreen = () => {
 
       {LoginView()}
 
-      <View style={styles.topSeparator} />
+      <View style={styles.separator} />
 
       <Text style={styles.subTitle}>
         {translations['settings.subscription']}
@@ -113,7 +97,7 @@ const SettingsScreen = () => {
         {translations['settings.paymentPlan']}
       </Text>
 
-      <View style={styles.bottomSeparator} />
+      <View style={styles.separator} />
 
       <View>
         <Text h4 h4Style={styles.language}>
@@ -160,36 +144,13 @@ const styles = StyleSheet.create({
     marginBottom: 25,
     fontFamily: 'Comfortaa',
   },
-  topSeparator: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 20,
-    borderBottomColor: 'black',
-    borderBottomWidth: 1,
-  },
-  bottomSeparator: {
+  separator: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 20,
     marginTop: 20,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
-  },
-  username: {
-    width: '100%',
-    fontSize: 15,
-    marginBottom: 3,
-    marginLeft: 12,
-    marginTop: 25,
-    fontFamily: 'Comfortaa',
-  },
-  password: {
-    width: '100%',
-    fontSize: 15,
-    marginTop: -35,
-    marginBottom: 3,
-    marginLeft: 12,
-    fontFamily: 'Comfortaa',
   },
   subTitle: {
     width: '100%',
@@ -204,11 +165,5 @@ const styles = StyleSheet.create({
     width: '80%',
     flexDirection: 'row',
     alignItems: 'flex-start',
-  },
-  flag: {
-    width: 70,
-    height: 70,
-    marginRight: 25,
-    marginLeft: 12,
   },
 });
