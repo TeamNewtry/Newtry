@@ -7,7 +7,7 @@ import {getProductByGTIN} from '../CloudFunctionsWrapper';
 import {Icon} from 'react-native-elements';
 import {LocalizationContext} from '../components/Translations';
 import LinearGradient from 'react-native-linear-gradient';
-import Comments from '../components/Comments';
+import Comments from '../components/comments/Comments';
 
 const splitIngredients = ingredients => {
   ingredients = ingredients ?? '';
@@ -104,7 +104,7 @@ const ProductView = ({navigation, route}) => {
               })}
             </View>
           </View>
-          <Comments />
+          <Comments productId={data.gtin} />
         </ScrollView>
       </View>
     );

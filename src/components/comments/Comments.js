@@ -1,25 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
+import WriteComment from './WriteComment';
 
-const Comments = () => {
+const Comments = props => {
   let [listData, setListData] = useState([]);
 
   useEffect(() => {
     firestore()
-      .collection('test/1/comments')
+      .collection(`comments/${props.productId}/comments`)
       .get()
       .then(collectionSnapshot => {
         let temp = [];
         collectionSnapshot.forEach(documentSnapshot => {
           const comment = documentSnapshot.data();
-          temp.push(comment.comment);
+          temp.push(comment);
           setListData(temp);
         });
       });
-  }, []);
-
-  console.log(listData);
+  }, [props.productId]);
 
   let itemView = ({item}) => {
     return (
@@ -29,13 +28,16 @@ const Comments = () => {
           backgroundColor: 'white',
           padding: 20,
         }}>
-        <Text>Kommentar: {item}</Text>
+        <Text>Name: {item.userName}</Text>
+        <Text>Rating: {item.productRating}</Text>
+        <Text>Kommentar: {item.comment}</Text>
       </View>
     );
   };
 
   return (
     <View>
+      <WriteComment productId={props.productId} />
       <FlatList data={listData} renderItem={itemView} />
     </View>
   );
