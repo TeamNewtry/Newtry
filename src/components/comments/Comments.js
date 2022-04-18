@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from 'react';
-import {FlatList, Text, View} from 'react-native';
+import React, {useEffect, useReducer, useState} from 'react';
+import {FlatList, Text, View, Button} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import WriteComment from './WriteComment';
 
 const Comments = props => {
   let [listData, setListData] = useState([]);
+  const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
   useEffect(() => {
     firestore()
@@ -18,7 +19,7 @@ const Comments = props => {
           setListData(temp);
         });
       });
-  }, [props.productId]);
+  }, [props.productId, reducerValue]);
 
   let itemView = ({item}) => {
     return (
@@ -37,7 +38,7 @@ const Comments = props => {
 
   return (
     <View>
-      <WriteComment productId={props.productId} />
+      <WriteComment productId={props.productId} updateComments={forceUpdate} />
       <FlatList data={listData} renderItem={itemView} />
     </View>
   );

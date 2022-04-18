@@ -8,6 +8,13 @@ const WriteComment = props => {
   const {user, setUser} = useContext(AuthContext);
   let [rating, setRating] = useState();
 
+  const delay = ms => new Promise(res => setTimeout(res, ms));
+
+  async function refreshComments() {
+    await delay(500);
+    props.updateComments();
+  }
+
   const handleComment = () => {
     const data = {
       comment: comment,
@@ -37,6 +44,7 @@ const WriteComment = props => {
     }
     setRating();
     setComment();
+    refreshComments();
   };
 
   return (
