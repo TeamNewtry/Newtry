@@ -104,7 +104,16 @@ const ProductView = ({navigation, route}) => {
               })}
             </View>
           </View>
-          <Comments productId={data.gtin} />
+          <LinearGradient
+            start={{x: 1, y: 0}}
+            end={{x: 0, y: 0}}
+            colors={['#24FF00', '#00D8D4', '#60dbfd']}
+            style={styles.line}
+          />
+          <View style={styles.padding}>
+            <Text style={styles.subTitle}>Wie findest du das Produkt ? </Text>
+            <Comments productId={data.gtin} />
+          </View>
         </ScrollView>
       </View>
     );
@@ -132,6 +141,11 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     fontFamily: 'Comfortaa',
   },
+  subTitle: {
+    fontSize: 16,
+    paddingBottom: 20,
+    fontFamily: 'Comfortaa',
+  },
   textContainer: {marginTop: 10, marginBottom: 10},
   row: {
     height: 35,
@@ -156,7 +170,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   line: {
-    height: 3,
+    height: 2,
   },
   backArrow: {
     position: 'absolute',
