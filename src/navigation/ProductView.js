@@ -72,13 +72,13 @@ const ProductView = ({navigation, route}) => {
               <Text />
               <Text style={styles.description}>{data.description}</Text>
             </View>
-            <View>
-              <Table borderStyle={{borderWidth: 1, borderColor: 'gray'}}>
+            <View style={styles.tableWrapper}>
+              <Table borderStyle={styles.table}>
                 <Row
                   data={tableHead}
                   flexArr={[2, 1]}
                   style={styles.head}
-                  textStyle={styles.text}
+                  textStyle={styles.textHead}
                 />
                 <TableWrapper style={styles.wrapper}>
                   <Rows
@@ -129,9 +129,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#EAFFFA',
   },
+  table: {
+    borderWidth: 3,
+    borderColor: '#EAFFFA',
+  },
   head: {
     height: 40,
-    backgroundColor: '#f1f8ff',
+    backgroundColor: 'rgb(246, 246, 247)',
+    marginBottom: 1,
+  },
+  row: {
+    height: 35,
+    backgroundColor: 'rgb(246, 246, 247)',
+  },
+  text: {
+    textAlign: 'left',
+    fontFamily: 'Comfortaa',
+  },
+  textHead: {
+    textAlign: 'left',
+    fontFamily: 'Comfortaa',
+    color: 'black',
   },
   wrapper: {
     flexDirection: 'row',
@@ -147,10 +165,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Comfortaa',
   },
   textContainer: {marginTop: 10, marginBottom: 10},
-  row: {
-    height: 35,
-  },
-  text: {textAlign: 'left'},
   image: {
     width: window.outerWidth,
     height: 400,
