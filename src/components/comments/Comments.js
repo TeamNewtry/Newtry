@@ -1,10 +1,12 @@
-import React, {useEffect, useReducer, useState} from 'react';
+import React, {useEffect, useReducer, useState, useContext} from 'react';
 import {FlatList, Text, View, StyleSheet} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import WriteComment from './WriteComment';
 import LinearGradient from 'react-native-linear-gradient';
+import {LocalizationContext} from '../../components/Translations';
 
 const Comments = props => {
+  const {translations} = useContext(LocalizationContext);
   let [listData, setListData] = useState([]);
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
@@ -56,8 +58,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Comfortaa',
   },
   comment: {
-    marginBottom: 20,
-    marginTop: 10,
+    marginBottom: 5,
+    marginTop: 5,
     fontFamily: 'Comfortaa',
     padding: 10,
     borderRadius: 20,
@@ -66,7 +68,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(246, 246, 247)',
     borderRadius: 20,
     padding: 15,
-    marginTop: 10,
+    marginTop: 15,
     fontFamily: 'Comfortaa',
   },
   commentHeader: {

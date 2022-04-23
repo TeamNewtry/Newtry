@@ -1,16 +1,12 @@
 import React, {useState, useContext} from 'react';
-import {
-  View,
-  TextInput,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../Authentication';
 import {Icon} from 'react-native-elements';
+import {LocalizationContext} from '../../components/Translations';
 
 const WriteComment = props => {
+  const {translations} = useContext(LocalizationContext);
   let [comment, setComment] = useState('');
   const {user, setUser} = useContext(AuthContext);
   let [rating, setRating] = useState();
@@ -26,10 +22,10 @@ const WriteComment = props => {
     const data = {
       comment: comment,
       userName: user.displayName,
+      // userPic: user.photoURL,
       productRating: rating,
     };
-    if (true) {
-      //TODO Eingaben überprüfen
+    if (rating > 0) {
       firestore()
         .doc(`comments/${props.productId}`)
         .get()
@@ -48,6 +44,8 @@ const WriteComment = props => {
               .add(data);
           }
         });
+    } else {
+      console.log('Please enter a rating');
     }
     setRating();
     setComment();
@@ -65,7 +63,7 @@ const WriteComment = props => {
         value={rating}
       />
       <TextInput
-        placeholder="Enter Comment"
+        placeholder={translations['comment.placeholder']}
         onChangeText={comment => setComment(comment)}
         maxLength={225}
         numberOfLines={5}

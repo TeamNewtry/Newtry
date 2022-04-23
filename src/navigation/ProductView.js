@@ -111,7 +111,7 @@ const ProductView = ({navigation, route}) => {
             style={styles.line}
           />
           <View style={styles.padding}>
-            <Text style={styles.subTitle}>Wie findest du das Produkt ? </Text>
+            <Text style={styles.subTitle}>{translations['rating.header']}</Text>
             <Comments productId={data.gtin} />
           </View>
         </ScrollView>
