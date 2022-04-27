@@ -25,7 +25,7 @@ function getProductByGTIN({gtin}) {
       nutrition,
       info.ingredients_text_de ?? info.ingredients_text,
       null,
-        (info.nutriscore_data || {}).grade ?? null,
+      (info.nutriscore_data || {}).grade ?? null,
       [info.image_url],
     );
   });
@@ -43,7 +43,7 @@ async function callCloudFunction(functionName, parameters, resolve) {
     .httpsCallable(functionName)(parameters)
     .then(response => {
       if (
-        typeof response.data !== 'object' ||
+        !(response.data instanceof Object) ||
         'httpErrorCode' in response.data
       ) {
         throw response.data;
