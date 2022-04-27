@@ -22,6 +22,8 @@ const ProductView = ({navigation, route}) => {
   const {data, error} = useAsync(getProductByGTIN, {
     gtin: route.params.gtin,
   });
+  console.log(route.params.gtin);
+  console.log(data);
   if (typeof data !== 'undefined') {
     const tableHead = [
       translations['nutrition.table.header1'],
