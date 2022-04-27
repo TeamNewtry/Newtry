@@ -1,0 +1,27 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them and run tests
+
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+      - feat/*
+  pull_request:
+    branches:
+      - main
+      - dev
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: run Jest tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@master
+    - uses: c-hive/gha-yarn-cache@v1
+    - run: yarn install
+    - run: yarn test
