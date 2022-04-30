@@ -1,17 +1,21 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import ProductView from '../src/navigation/ProductView';
-import * as CloudFunctionsWrapper from '../src/CloudFunctionsWrapper';
+import * as MockCloudFunctionsWrapper from '../src/CloudFunctionsWrapper';
 
+jest.mock(
+  '../node_modules/react-native/Libraries/EventEmitter/NativeEventEmitter',
+);
 jest.mock(
   'react-native-table-component',
   () => 'Row, Rows, Table, TableWrapper',
 );
-const getProduct = jest.spyOn(CloudFunctionsWrapper, 'getProductByGTIN');
-getProduct.mockImplementation(gtin => ({
-  gtin: '0000080135876',
-}));
-test('renders correctly', () => {
+jest.mock('../src/CloudFunctionsWrapper');
+MockCloudFunctionsWrapper.getProductByGTIN.mockImplementation(gtin =>
+  Promise.resolve({data: {gtin: gtin}}),
+);
+
+test('renders ingredients', () => {
   const route = {
     isAccessibilityModeOn: false,
     params: {
