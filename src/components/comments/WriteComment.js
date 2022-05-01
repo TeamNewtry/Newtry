@@ -62,6 +62,7 @@ const WriteComment = props => {
       ratingBackgroundColor='#a9a9a9'
       tintColor='#EAFFFA'
       ratingCount={5}
+      minValue={1}
       imageSize={30}
       onFinishRating={rating => setRating(rating)}
       style={{ paddingLeft: 200, paddingBottom: 20 }}
