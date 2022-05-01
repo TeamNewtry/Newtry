@@ -4,6 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../Authentication';
 import {Icon} from 'react-native-elements';
 import {LocalizationContext} from '../../components/Translations';
+import { Rating, AirbnbRating } from 'react-native-ratings';
 
 const WriteComment = props => {
   const {translations} = useContext(LocalizationContext);
@@ -54,14 +55,18 @@ const WriteComment = props => {
 
   return (
     <View style={styles.container}>
-      <TextInput
-        placeholder="Enter Rating"
-        onChangeText={rating => setRating(rating)}
-        maxLength={1}
-        keyboardType="numeric"
-        style={styles.textInput}
-        value={rating}
+
+      <Rating
+      type='star'
+      tintColor='#EAFFFA'
+      ratingCount={5}
+      imageSize={30}
+      onFinishRating={rating => setRating(rating)}
+      style={{ paddingLeft: 200, paddingBottom: 20 }}
+    
       />
+            
+     
       <TextInput
         placeholder={translations['comment.placeholder']}
         onChangeText={comment => setComment(comment)}
