@@ -57,13 +57,15 @@ const WriteComment = props => {
     <View style={styles.container}>
 
       <Rating
-      type='star'
+      type='custom'
+      ratingColor='#f1c40f'
+      ratingBackgroundColor='#a9a9a9'
       tintColor='#EAFFFA'
       ratingCount={5}
       imageSize={30}
       onFinishRating={rating => setRating(rating)}
       style={{ paddingLeft: 200, paddingBottom: 20 }}
-    
+      startingValue={3}
       />
             
      
