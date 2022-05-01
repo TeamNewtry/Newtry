@@ -4,7 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import WriteComment from './WriteComment';
 import LinearGradient from 'react-native-linear-gradient';
 import {LocalizationContext} from '../../components/Translations';
-import { Rating, AirbnbRating } from 'react-native-ratings';
+import {Rating} from 'react-native-ratings';
 
 const Comments = props => {
   const {translations} = useContext(LocalizationContext);
@@ -33,7 +33,7 @@ const Comments = props => {
           <Rating
           type='custom'
           ratingColor='#f1c40f'
-          ratingBackgroundColor='#a9a9a9'
+          ratingBackgroundColor='#a5b3af'
           tintColor='#EAFFFA'
           startingValue={item.productRating}
           imageSize={18}
