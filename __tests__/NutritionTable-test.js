@@ -1,18 +1,15 @@
 import 'react-native';
 import React from 'react';
-import {} from '../src/navigation/ProductView';
-import App from '../src/App';
 import data from '../__mocks__/productMock';
+import NutritionTable from '../src/components/NutritionTable';
 import renderer from 'react-test-renderer';
 
-describe('Testing Nutrition Table', () => {
+describe('testing Nutrition Table', () => {
   it('renders empty view when no data is passed', () => {
-    renderer.create(/>);
+    renderer.create(<NutritionTable />);
   });
 
   it('renders table for passed data', () => {
-    renderer.create(
-      <App navigation={'ProductView'} route={{gtin: '0000080135876'}} />,
-    );
+    renderer.create(<NutritionTable data={data.nutrition} />);
   });
 });
