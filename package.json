@@ -49,11 +49,12 @@
   },
   "jest": {
     "preset": "react-native",
-    "transformIgnorePatterns": [
-      "node_modules/(?!((jest-)?react-native(-elements|-size-matters|-ratings|-linear-gradient|-localize|-table-component|-camera|-iphone-x-helper|-unordered-list|-safe-area-context)?|@react-native(-community|-google-signin|-firebase)?|@react-navigation)/)"
-    ],
-    "setupFiles": [
-      "./jest-setup.js"
+
+    "transformIgnorePatterns": ["node_modules/(?!((jest-)?react-native(-elements|-size-matters|-ratings|-linear-gradient|-localize|-table-component|-camera|-iphone-x-helper|-unordered-list|-safe-area-context)?|@react-native(-community|-google-signin|-firebase)?|@react-navigation)/)"],
+    "setupFiles": ["./jest-setup.js"],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
     ]
   }
 }
