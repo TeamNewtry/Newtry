@@ -1,18 +1,18 @@
 import 'react-native';
 import React from 'react';
 import data from '../__mocks__/productMock';
-import NutritionTable from '../src/components/NutritionTable';
+import IngredientList from '../src/components/IngredientList';
 import renderer from 'react-test-renderer';
 
-describe('testing Nutrition Table', () => {
+describe('testing ingredients list', () => {
   it('renders empty view when no data is passed', () => {
-    const tree = renderer.create(<NutritionTable />).toJSON();
+    const tree = renderer.create(<IngredientList />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders table for passed data', () => {
+  it('renders list for passed data', () => {
     const tree = renderer
-      .create(<NutritionTable data={data.nutrition} />)
+      .create(<IngredientList data={data.ingredients} />)
       .toJSON();
     expect(tree).toMatchSnapshot();
   });
