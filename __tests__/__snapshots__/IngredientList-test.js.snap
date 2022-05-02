@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing ingredients list renders empty view when no data is passed 1`] = `
+<View>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Comfortaa",
+        "fontSize": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+     Ingredients
+  </Text>
+</View>
+`;
+
+exports[`testing ingredients list renders list for passed data 1`] = `
+<View>
+  <Text
+    style={
+      Object {
+        "fontFamily": "Comfortaa",
+        "fontSize": 20,
+        "paddingTop": 10,
+      }
+    }
+  >
+     Ingredients
+  </Text>
+</View>
+`;

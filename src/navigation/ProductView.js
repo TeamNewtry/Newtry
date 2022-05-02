@@ -7,37 +7,16 @@ import {getProductByGTIN} from '../CloudFunctionsWrapper';
 import {Icon} from 'react-native-elements';
 import {LocalizationContext} from '../components/Translations';
 import LinearGradient from 'react-native-linear-gradient';
-
-const splitIngredients = ingredients => {
-  ingredients = ingredients ?? '';
-  const regex = /[^,([]+([([].*?[)\]]+)?/g;
-  const results = [...ingredients.matchAll(regex)];
-  return results
-    .map(result => result[0].trim())
-    .filter(result => result.length > 1);
-};
+import NutritionTable from '../components/NutritionTable';
+import IngredientList from '../components/IngredientList';
 
 const ProductView = ({navigation, route}) => {
   const {translations} = useContext(LocalizationContext);
   const {data, error} = useAsync(getProductByGTIN, {
     gtin: route.params.gtin,
   });
+  console.log(JSON.stringify(data));
   if (typeof data !== 'undefined') {
-    const tableHead = [
-      translations['nutrition.table.header1'],
-      translations['nutrition.table.header2'],
-    ];
-    const nut = data.nutrition;
-    const tableData = [
-      [translations['nutrition.table.field1'], ` ${nut.calories} kcal`],
-      [translations['nutrition.table.field2'], ` ${nut.totalFat} g`],
-      [translations['nutrition.table.field3'], ` ${nut.saturatedFat} g`],
-      [translations['nutrition.table.field4'], ` ${nut.carbohydrates} g`],
-      [translations['nutrition.table.field5'], ` ${nut.sugar} g`],
-      [translations['nutrition.table.field6'], ` ${nut.protein} g`],
-      [translations['nutrition.table.field7'], ` ${nut.salt} g`],
-    ];
-
     return (
       <View style={styles.container}>
         <View style={styles.backArrow}>
@@ -71,37 +50,8 @@ const ProductView = ({navigation, route}) => {
               <Text />
               <Text style={styles.description}>{data.description}</Text>
             </View>
-            <View>
-              <Table borderStyle={{borderWidth: 1, borderColor: 'gray'}}>
-                <Row
-                  data={tableHead}
-                  flexArr={[2, 1]}
-                  style={styles.head}
-                  textStyle={styles.text}
-                />
-                <TableWrapper style={styles.wrapper}>
-                  <Rows
-                    data={tableData}
-                    flexArr={[2, 1]}
-                    resizeMode="contain"
-                    style={styles.row}
-                    textStyle={styles.text}
-                  />
-                </TableWrapper>
-              </Table>
-            </View>
-            <View>
-              <Text style={styles.title}>
-                {translations['nutrition.ingredients.header']}
-              </Text>
-              {splitIngredients(data.ingredients).map(element => {
-                return (
-                  <Unorderedlist key={element}>
-                    <Text style={styles.description}>{element}</Text>
-                  </Unorderedlist>
-                );
-              })}
-            </View>
+            <NutritionTable data={data.nutrition} />
+            <IngredientList data={data.ingredients} />
           </View>
         </ScrollView>
       </View>
@@ -131,9 +81,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Comfortaa',
   },
   textContainer: {marginTop: 10, marginBottom: 10},
-  row: {
-    height: 35,
-  },
   text: {textAlign: 'left'},
   image: {
     width: window.outerWidth,
