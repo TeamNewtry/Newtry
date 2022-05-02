@@ -7,7 +7,6 @@ NativeModules.RNGoogleSignin = {
   SIGN_IN_CANCELLED: 0,
   configure: () => {},
 };
-
 NativeModules.RNFBAppModule = {};
 NativeModules.RNFBAnalyticsModule = {
   logEvent: () => {},
@@ -61,3 +60,4 @@ NativeModules.RNFBPerfModule = {};
 NativeModules.RNFBStorageModule = {
   useEmulator: () => {},
 };
+
