@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useState, useContext} from 'react';
 import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
@@ -10,7 +11,7 @@ const WriteComment = props => {
   const {translations} = useContext(LocalizationContext);
   let [comment, setComment] = useState('');
   const {user, setUser} = useContext(AuthContext);
-  let [rating, setRating] = useState();
+  let [rating, setRating] = useState(0);
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -48,28 +49,26 @@ const WriteComment = props => {
     } else {
       console.log('Please enter a rating');
     }
-    setRating();
+    setRating(0);
     setComment();
     refreshComments();
   };
 
   return (
     <View style={styles.container}>
-
       <Rating
-      type='custom'
-      ratingColor='#f1c40f'
-      ratingBackgroundColor='#a5b3af'
-      tintColor='#EAFFFA'
-      ratingCount={5}
-      minValue={1}
-      imageSize={30}
-      onFinishRating={rating => setRating(rating)}
-      style={{ paddingLeft: 200, paddingBottom: 20 }}
-      startingValue={3}
+        type="custom"
+        ratingColor="#f1c40f"
+        ratingBackgroundColor="#a5b3af"
+        tintColor="#EAFFFA"
+        startingValue={rating}
+        ratingCount={5}
+        minValue={1}
+        imageSize={30}
+        onFinishRating={rating => setRating(rating)}
+        style={styles.rating}
       />
-            
-     
+
       <TextInput
         placeholder={translations['comment.placeholder']}
         onChangeText={comment => setComment(comment)}
@@ -89,6 +88,10 @@ const WriteComment = props => {
 };
 
 const styles = StyleSheet.create({
+  rating: {
+    paddingRight: 200,
+    paddingBottom: 15,
+  },
   container: {
     flex: 1,
   },
