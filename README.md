@@ -11,7 +11,7 @@
 
 [![Follow me on LinkedIn - Oliver](https://img.shields.io/badge/Follow_me_on_LinkedIn-Oliver-0A66C2?logo=linkedin)](https://www.linkedin.com/in/oliver-schirmer/)
 [![Follow me on LinkedIn - Jakob](https://img.shields.io/badge/Follow_me_on_LinkedIn-Jakob-0A66C2?logo=linkedin)](https://www.linkedin.com/in/jakob-braun-07a893235/)
-![Follow me on LinkedIn - Jona](https://img.shields.io/badge/Follow_me_on_LinkedIn-Jona-0A66C2?logo=linkedin)
+[![Follow me on LinkedIn - Jona](https://img.shields.io/badge/Follow_me_on_LinkedIn-Jona-0A66C2?logo=linkedin)](https://www.linkedin.com/in/jona-kuhn-673050239/)
 [![Follow me on LinkedIn - Norman](https://img.shields.io/badge/Follow_me_on_LinkedIn-Norman-0A66C2?logo=linkedin)](https://www.linkedin.com/in/norman-reimer-658b511b5/)
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/TeamNewtry/Newtry)
