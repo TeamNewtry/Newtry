@@ -16,3 +16,5 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/TeamNewtry/Newtry)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/TeamNewtry/Newtry)
+
+[![Website newtry.ionae.de](https://img.shields.io/website-up-down-green-red/https/newtry.ionae.de.svg)](https://newtry.ionae.de/)
