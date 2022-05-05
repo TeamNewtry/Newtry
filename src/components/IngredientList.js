@@ -21,7 +21,7 @@ const IngredientList = ing => {
       {splitIngredients(ing.data).map(element => {
         return (
           <Unorderedlist key={element}>
-            <Text style={styles.description}>{element}</Text>
+            <Text style={styles.description}>{element.replace(/_/g, '')}</Text>
           </Unorderedlist>
         );
       })}
