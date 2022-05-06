@@ -36,11 +36,22 @@ const WriteComment = props => {
             firestore()
               .collection(`comments/${props.productId}/comments`)
               .add(data);
+            firestore()
+              .doc(`comments/${props.productId}`)
+              .update({
+                rating: firestore.FieldValue.increment(rating),
+                count: firestore.FieldValue.increment(1),
+              });
           } else {
             firestore()
               .collection('comments')
               .doc(`${props.productId}`)
               .set({});
+              firestore()
+               .doc(`comments/${props.productId}`)
+                .set({
+                  rating: rating,
+                  count: 1,
             firestore()
               .collection(`comments/${props.productId}/comments`)
               .add(data);
