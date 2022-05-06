@@ -22,5 +22,9 @@
   "nutrition.ingredients.header": " Ingredients",
   "settings.change_language": " Change Language",
   "rating.header": "Tell us about this product ?",
-  "comment.placeholder": "Enter comment"
+  "comment.placeholder": "Enter comment",
+  "customerrating.header": "Customer rating",
+  "ratings.text": "Ratings",
+  "ratings.count": "out of 5"
+
 }
