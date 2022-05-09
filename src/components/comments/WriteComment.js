@@ -4,7 +4,7 @@ import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../Authentication';
 import {Icon} from 'react-native-elements';
-import {LocalizationContext} from '../../components/Translations';
+import {LocalizationContext} from '../Translations';
 import {Rating} from 'react-native-ratings';
 
 const WriteComment = props => {
@@ -51,7 +51,7 @@ const WriteComment = props => {
                .doc(`comments/${props.productId}`)
                 .set({
                   rating: rating,
-                  count: 1,
+                  count: 1});
             firestore()
               .collection(`comments/${props.productId}/comments`)
               .add(data);
