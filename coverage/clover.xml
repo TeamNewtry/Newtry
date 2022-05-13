@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1651519306770" clover="3.2.0">
-  <project timestamp="1651519306770" name="All files">
+<coverage generated="1651746123185" clover="3.2.0">
+  <project timestamp="1651746123185" name="All files">
     <metrics statements="206" coveredstatements="43" conditionals="56" coveredconditionals="16" methods="69" coveredmethods="4" elements="331" coveredelements="63" complexity="0" loc="206" ncloc="206" packages="5" files="15" classes="15"/>
     <package name="src">
       <metrics statements="18" coveredstatements="4" conditionals="10" coveredconditionals="0" methods="9" coveredmethods="1"/>
@@ -67,7 +67,7 @@
       <file name="NutritionTable.js" path="C:\Users\I538779\Documents\Universitaet\Newtry\src\components\NutritionTable.js">
         <metrics statements="6" coveredstatements="6" conditionals="14" coveredconditionals="14" methods="1" coveredmethods="1"/>
         <line num="6" count="2" type="stmt"/>
-        <line num="7" count="2" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
         <line num="42" count="2" type="stmt"/>

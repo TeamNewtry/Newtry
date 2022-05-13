@@ -54,9 +54,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
         <Text
           style={
             Array [
-              Object {
-                "textAlign": "left",
-              },
+              Array [
+                undefined,
+                Object {
+                  "textAlign": "left",
+                },
+              ],
               Object {
                 "backgroundColor": "transparent",
               },
@@ -90,9 +93,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
         <Text
           style={
             Array [
-              Object {
-                "textAlign": "left",
-              },
+              Array [
+                undefined,
+                Object {
+                  "textAlign": "left",
+                },
+              ],
               Object {
                 "backgroundColor": "transparent",
               },
@@ -154,9 +160,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -191,9 +200,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -244,9 +256,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -281,9 +296,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -334,9 +352,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -371,9 +392,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -424,9 +448,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -461,9 +488,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -514,9 +544,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -551,9 +584,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -604,9 +640,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -641,9 +680,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -694,9 +736,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -731,9 +776,12 @@ exports[`testing Nutrition Table renders empty view when no data is passed 1`] =
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -804,9 +852,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
         <Text
           style={
             Array [
-              Object {
-                "textAlign": "left",
-              },
+              Array [
+                undefined,
+                Object {
+                  "textAlign": "left",
+                },
+              ],
               Object {
                 "backgroundColor": "transparent",
               },
@@ -840,9 +891,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
         <Text
           style={
             Array [
-              Object {
-                "textAlign": "left",
-              },
+              Array [
+                undefined,
+                Object {
+                  "textAlign": "left",
+                },
+              ],
               Object {
                 "backgroundColor": "transparent",
               },
@@ -904,9 +958,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -941,9 +998,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -994,9 +1054,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1031,9 +1094,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1084,9 +1150,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1121,9 +1190,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1174,9 +1246,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1211,9 +1286,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1264,9 +1342,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1301,9 +1382,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1354,9 +1438,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1391,9 +1478,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1444,9 +1534,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
@@ -1481,9 +1574,12 @@ exports[`testing Nutrition Table renders table for passed data 1`] = `
               resizeMode="contain"
               style={
                 Array [
-                  Object {
-                    "textAlign": "left",
-                  },
+                  Array [
+                    undefined,
+                    Object {
+                      "textAlign": "left",
+                    },
+                  ],
                   Object {
                     "backgroundColor": "transparent",
                   },
