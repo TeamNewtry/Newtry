@@ -3,6 +3,7 @@
 [![stars - Newtry](https://img.shields.io/github/stars/TeamNewtry/Newtry?style=social)](https://github.com/TeamNewtry/Newtry)
 [![forks - Newtry](https://img.shields.io/github/forks/TeamNewtry/Newtry?style=social)](https://github.com/TeamNewtry/Newtry)
 [![Node.js CI](https://github.com/TeamNewtry/Newtry/actions/workflows/ci.yml/badge.svg)](https://github.com/TeamNewtry/Newtry/actions/workflows/ci.yml)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/4f17db315b4247d7ad9d232d2902f9b8)](https://www.codacy.com/gh/TeamNewtry/Newtry/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TeamNewtry/Newtry&amp;utm_campaign=Badge_Grade)
 
 ![Built with - JavaScript](https://img.shields.io/badge/Built_with-javascript-f7df1e.svg?style=flat&logo=javascript&logoColor=%23F7DF1E&)
 ![Built with - React Native](https://img.shields.io/badge/Built_with-react_native-66d2f0.svg?style=flat&logo=react&logoColor=%2361DAFB)
