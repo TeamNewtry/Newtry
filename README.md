@@ -13,9 +13,9 @@
 ![Built with - Git](https://img.shields.io/badge/Built_with-git-%23F05033.svg?style=flat&logo=git&logoColor=white)
 ![Built with - GitHub](https://img.shields.io/badge/Built_with-github-%23121011.svg?style=flat&logo=github&logoColor=white)
 ![Built with - GitHub Actions](https://img.shields.io/badge/Built_with-github%20actions-%232671E5.svg?style=flat&logo=githubactions&logoColor=white)
-![Built with -Android Studio](https://img.shields.io/badge/Bulit_with-Android%20Studio-3DDC84.svg?style=flat&logo=android-studio&logoColor=white)
-![Built with -Visual Studio Code](https://img.shields.io/badge/Built_with-Visual%20Studio%20Code-0078d7.svg?style=flat&logo=visual-studio-code&logoColor=white)
-![Built with -WebStorm](https://img.shields.io/badge/Built_with-webstorm-143?style=flat&logo=webstorm&logoColor=white&color=black)
+![Built with - Android Studio](https://img.shields.io/badge/Bulit_with-Android%20Studio-3DDC84.svg?style=flat&logo=android-studio&logoColor=white)
+![Built with - Visual Studio Code](https://img.shields.io/badge/Built_with-Visual%20Studio%20Code-0078d7.svg?style=flat&logo=visual-studio-code&logoColor=white)
+![Built with - WebStorm](https://img.shields.io/badge/Built_with-webstorm-143?style=flat&logo=webstorm&logoColor=white&color=black)
 ![Built with - Coffee](https://img.shields.io/badge/Built_with-Coffee-2F2625?logo=Coffeescript)
 ![Built with - Love](https://img.shields.io/badge/Built_with-Love-E71D29?logo=Undertale)
 
