@@ -9,6 +9,7 @@ import {LocalizationContext} from '../components/Translations';
 import LinearGradient from 'react-native-linear-gradient';
 import NutritionTable from '../components/NutritionTable';
 import IngredientList from '../components/IngredientList';
+import DetailPage from '../components/DetailPage';
 
 const ProductView = ({navigation, route}) => {
   const {translations} = useContext(LocalizationContext);
@@ -17,45 +18,33 @@ const ProductView = ({navigation, route}) => {
   });
   console.log(JSON.stringify(data));
   if (typeof data !== 'undefined') {
-    return (
-      <View style={styles.container}>
-        <View style={styles.backArrow}>
-          <Icon
-            name={'arrow-back'}
-            size={20}
-            reverse={true}
-            type={'ionicons'}
-            onPress={() => navigation.navigate('HomeScreen', {route})}
-            reverseColor={'black'}
-            color={'#EAFFFA'}
+    const page = (
+      <ScrollView>
+        <View style={styles.imageBorder}>
+          <Image
+            source={{uri: data.pictures.toString()}}
+            style={styles.image}
+          />
+          <LinearGradient
+            start={{x: 1, y: 0}}
+            end={{x: 0, y: 0}}
+            colors={['#24FF00', '#00D8D4', '#60dbfd']}
+            style={styles.line}
           />
         </View>
-        <ScrollView>
-          <View style={styles.imageBorder}>
-            <Image
-              source={{uri: data.pictures.toString()}}
-              style={styles.image}
-            />
-            <LinearGradient
-              start={{x: 1, y: 0}}
-              end={{x: 0, y: 0}}
-              colors={['#24FF00', '#00D8D4', '#60dbfd']}
-              style={styles.line}
-            />
+        <View style={styles.padding}>
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>{data.name}</Text>
+            <Text style={styles.gtin}>GTIN: {data.gtin}</Text>
+            <Text />
+            <Text style={styles.description}>{data.description}</Text>
           </View>
-          <View style={styles.padding}>
-            <View style={styles.textContainer}>
-              <Text style={styles.title}>{data.name}</Text>
-              <Text style={styles.gtin}>GTIN: {data.gtin}</Text>
-              <Text />
-              <Text style={styles.description}>{data.description}</Text>
-            </View>
-            <NutritionTable data={data.nutrition} />
-            <IngredientList data={data.ingredients} />
-          </View>
-        </ScrollView>
-      </View>
+          <NutritionTable data={data.nutrition} />
+          <IngredientList data={data.ingredients} />
+        </View>
+      </ScrollView>
     );
+    return DetailPage({navigation, route}, page);
   } else {
     return <View />;
   }

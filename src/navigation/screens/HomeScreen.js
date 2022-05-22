@@ -5,7 +5,6 @@ import {getProductByGTIN, searchProducts} from '../../CloudFunctionsWrapper';
 import {Table, TableWrapper, Rows} from 'react-native-table-component';
 import RenderIf from '../../components/Renderif';
 import {LocalizationContext} from '../../components/Translations';
-import PictureButton from '../../components/PictureButton';
 
 const HomeScreen = ({navigation, route}) => {
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -15,7 +14,6 @@ const HomeScreen = ({navigation, route}) => {
   const [tableData, setTableData] = React.useState([
     ['', translations['searchbar.loading.text'], ''],
   ]);
-  const elementButton2 = PictureButton(navigation, (value) => <Text>{value}</Text>);
 
   const elementButton = (value, gtin) => (
     <TouchableOpacity
@@ -39,8 +37,8 @@ const HomeScreen = ({navigation, route}) => {
         const r = result.map(res => {
           return [
             pictureButton(res.pictures.toString(), res.gtin),
-            elementButton2(res.name, res.gtin),
-            elementButton2(res.gtin, res.gtin),
+            elementButton(res.name, res.gtin),
+            elementButton(res.gtin, res.gtin),
           ];
         });
         setTableData(r);
