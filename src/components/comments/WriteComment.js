@@ -3,13 +3,14 @@ import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../Authentication';
 import {Icon} from 'react-native-elements';
-import {LocalizationContext} from '../../components/Translations';
+import {LocalizationContext} from '../Translations';
+import {Rating} from 'react-native-ratings';
 
 const WriteComment = props => {
   const {translations} = useContext(LocalizationContext);
   let [comment, setComment] = useState('');
   const {user, setUser} = useContext(AuthContext);
-  let [rating, setRating] = useState();
+  let [rating, setRating] = useState(0);
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
@@ -34,11 +35,21 @@ const WriteComment = props => {
             firestore()
               .collection(`comments/${props.productId}/comments`)
               .add(data);
+            firestore()
+              .doc(`comments/${props.productId}`)
+              .update({
+                rating: firestore.FieldValue.increment(rating),
+                count: firestore.FieldValue.increment(1),
+              });
           } else {
             firestore()
               .collection('comments')
               .doc(`${props.productId}`)
               .set({});
+            firestore().doc(`comments/${props.productId}`).set({
+              rating: rating,
+              count: 1,
+            });
             firestore()
               .collection(`comments/${props.productId}/comments`)
               .add(data);
@@ -47,21 +58,26 @@ const WriteComment = props => {
     } else {
       console.log('Please enter a rating');
     }
-    setRating();
+    setRating(0);
     setComment();
     refreshComments();
   };
 
   return (
     <View style={styles.container}>
-      <TextInput
-        placeholder="Enter Rating"
-        onChangeText={input => setRating(input)}
-        maxLength={1}
-        keyboardType="numeric"
-        style={styles.textInput}
-        value={rating}
+      <Rating
+        type="custom"
+        ratingColor="#f1c40f"
+        ratingBackgroundColor="#a5b3af"
+        tintColor="#EAFFFA"
+        startingValue={rating}
+        ratingCount={5}
+        minValue={1}
+        imageSize={30}
+        onFinishRating={rating => setRating(rating)}
+        style={styles.rating}
       />
+
       <TextInput
         placeholder={translations['comment.placeholder']}
         onChangeText={input => setComment(input)}
@@ -81,6 +97,10 @@ const WriteComment = props => {
 };
 
 const styles = StyleSheet.create({
+  rating: {
+    paddingRight: 200,
+    paddingBottom: 15,
+  },
   container: {
     flex: 1,
   },

@@ -22,5 +22,8 @@
   "nutrition.ingredients.header": " Zutaten",
   "settings.change_language": " Sprache ändern",
   "rating.header": "Wie findest du das Produkt ?",
-  "comment.placeholder": "Kommentar eingeben"
+  "comment.placeholder": "Kommentar eingeben",
+  "customerrating.header": "Kundenrezension",
+  "ratings.text": "Bewertungen",
+  "ratings.count": "von 5"
 }

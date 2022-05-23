@@ -8,6 +8,7 @@ import {Icon} from 'react-native-elements';
 import {LocalizationContext} from '../components/Translations';
 import LinearGradient from 'react-native-linear-gradient';
 import Comments from '../components/comments/Comments';
+import CustomerRating from '../components/CustomerRating';
 
 const splitIngredients = ingredients => {
   ingredients = ingredients ?? '';
@@ -110,6 +111,20 @@ const ProductView = ({navigation, route}) => {
             colors={['#24FF00', '#00D8D4', '#60dbfd']}
             style={styles.line}
           />
+
+          <View style={styles.padding}>
+            <Text style={styles.subTitle}>
+              {translations['customerrating.header']}
+            </Text>
+            <CustomerRating productId={data.gtin} />
+          </View>
+          <LinearGradient
+            start={{x: 1, y: 0}}
+            end={{x: 0, y: 0}}
+            colors={['#24FF00', '#00D8D4', '#60dbfd']}
+            style={styles.line}
+          />
+
           <View style={styles.padding}>
             <Text style={styles.subTitle}>{translations['rating.header']}</Text>
             <Comments productId={data.gtin} />
