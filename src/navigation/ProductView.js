@@ -10,6 +10,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import NutritionTable from '../components/NutritionTable';
 import IngredientList from '../components/IngredientList';
 import DetailPage from '../components/DetailPage';
+import CustomerRating from '../components/CustomerRating';
+import Comments from '../components/comments/Comments';
 
 const ProductView = ({navigation, route}) => {
   const {translations} = useContext(LocalizationContext);
@@ -42,6 +44,30 @@ const ProductView = ({navigation, route}) => {
           <NutritionTable data={data.nutrition} />
           <IngredientList data={data.ingredients} />
         </View>
+        <LinearGradient
+          start={{x: 1, y: 0}}
+          end={{x: 0, y: 0}}
+          colors={['#24FF00', '#00D8D4', '#60dbfd']}
+          style={styles.line}
+        />
+
+        <View style={styles.padding}>
+          <Text style={styles.subTitle}>
+            {translations['customerrating.header']}
+          </Text>
+          <CustomerRating productId={data.gtin} />
+        </View>
+        <LinearGradient
+          start={{x: 1, y: 0}}
+          end={{x: 0, y: 0}}
+          colors={['#24FF00', '#00D8D4', '#60dbfd']}
+          style={styles.line}
+        />
+
+        <View style={styles.padding}>
+          <Text style={styles.subTitle}>{translations['rating.header']}</Text>
+          <Comments productId={data.gtin} />
+        </View>
       </ScrollView>
     );
     return DetailPage({navigation, route}, page);
@@ -57,9 +83,27 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#EAFFFA',
   },
+  table: {
+    borderWidth: 3,
+    borderColor: '#EAFFFA',
+  },
   head: {
     height: 40,
-    backgroundColor: '#f1f8ff',
+    backgroundColor: 'rgb(246, 246, 247)',
+    marginBottom: 1,
+  },
+  row: {
+    height: 35,
+    backgroundColor: 'rgb(246, 246, 247)',
+  },
+  text: {
+    textAlign: 'left',
+    fontFamily: 'Comfortaa',
+  },
+  textHead: {
+    textAlign: 'left',
+    fontFamily: 'Comfortaa',
+    color: 'black',
   },
   wrapper: {
     flexDirection: 'row',
@@ -69,8 +113,12 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     fontFamily: 'Comfortaa',
   },
+  subTitle: {
+    fontSize: 16,
+    paddingBottom: 20,
+    fontFamily: 'Comfortaa',
+  },
   textContainer: {marginTop: 10, marginBottom: 10},
-  text: {textAlign: 'left'},
   image: {
     width: window.outerWidth,
     height: 400,
@@ -90,7 +138,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   line: {
-    height: 3,
+    height: 2,
   },
   backArrow: {
     position: 'absolute',

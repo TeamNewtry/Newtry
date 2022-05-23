@@ -10,7 +10,7 @@
   "settings.subscription": " Subscribe",
   "settings.paymentPlan": " 5$/Month",
   "settings.language.text": " Language",
-  "nutrition.table.header1": " Average nutrional values",
+  "nutrition.table.header1": " Average nutritional values",
   "nutrition.table.header2": " per 100g",
   "nutrition.table.field1": " Calories",
   "nutrition.table.field2": " Fat",
@@ -20,5 +20,11 @@
   "nutrition.table.field6": " Protein",
   "nutrition.table.field7": " Salt",
   "nutrition.ingredients.header": " Ingredients",
-  "settings.change_language": " Change Language"
+  "settings.change_language": " Change Language",
+  "rating.header": "Tell us about this product ?",
+  "comment.placeholder": "Enter comment",
+  "customerrating.header": "Customer rating",
+  "ratings.text": "Ratings",
+  "ratings.count": "out of 5"
+
 }
