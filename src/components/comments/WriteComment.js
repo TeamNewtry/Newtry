@@ -56,7 +56,7 @@ const WriteComment = props => {
     <View style={styles.container}>
       <TextInput
         placeholder="Enter Rating"
-        onChangeText={rating => setRating(rating)}
+        onChangeText={input => setRating(input)}
         maxLength={1}
         keyboardType="numeric"
         style={styles.textInput}
@@ -64,7 +64,7 @@ const WriteComment = props => {
       />
       <TextInput
         placeholder={translations['comment.placeholder']}
-        onChangeText={comment => setComment(comment)}
+        onChangeText={input => setComment(input)}
         maxLength={225}
         numberOfLines={5}
         multiline={true}
