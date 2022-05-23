@@ -47,11 +47,10 @@ const WriteComment = props => {
               .collection('comments')
               .doc(`${props.productId}`)
               .set({});
-              firestore()
-               .doc(`comments/${props.productId}`)
-                .set({
-                  rating: rating,
-                  count: 1});
+            firestore().doc(`comments/${props.productId}`).set({
+              rating: rating,
+              count: 1,
+            });
             firestore()
               .collection(`comments/${props.productId}/comments`)
               .add(data);
