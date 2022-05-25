@@ -41,12 +41,12 @@ const NutritionTable = nut => {
   ];
   return (
     <View>
-      <Table borderStyle={{borderWidth: 1, borderColor: 'gray'}}>
+      <Table borderStyle={{borderColor: 'transparent'}}>
         <Row
           data={tableHead}
           flexArr={[2, 1]}
           style={styles.head}
-          textStyle={styles.text}
+          textStyle={styles.textHead}
         />
         <TableWrapper style={styles.wrapper}>
           <Rows
@@ -65,12 +65,26 @@ const NutritionTable = nut => {
 export default NutritionTable;
 
 const styles = StyleSheet.create({
+  table: {
+    borderWidth: 3,
+    borderColor: '#EAFFFA',
+  },
   head: {
     height: 40,
-    backgroundColor: '#f1f8ff',
+    backgroundColor: 'rgb(246, 246, 247)',
+    marginBottom: 1,
   },
   row: {
     height: 35,
+    backgroundColor: 'rgb(246, 246, 247)',
   },
-  text: {textAlign: 'left'},
+  text: {
+    textAlign: 'left',
+    fontFamily: 'Comfortaa',
+  },
+  textHead: {
+    textAlign: 'left',
+    fontFamily: 'Comfortaa',
+    color: 'black',
+  },
 });

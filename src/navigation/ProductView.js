@@ -83,28 +83,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#EAFFFA',
   },
-  table: {
-    borderWidth: 3,
-    borderColor: '#EAFFFA',
-  },
-  head: {
-    height: 40,
-    backgroundColor: 'rgb(246, 246, 247)',
-    marginBottom: 1,
-  },
-  row: {
-    height: 35,
-    backgroundColor: 'rgb(246, 246, 247)',
-  },
-  text: {
-    textAlign: 'left',
-    fontFamily: 'Comfortaa',
-  },
-  textHead: {
-    textAlign: 'left',
-    fontFamily: 'Comfortaa',
-    color: 'black',
-  },
   wrapper: {
     flexDirection: 'row',
   },
