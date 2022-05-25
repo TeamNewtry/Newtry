@@ -1,4 +1,4 @@
-import React, {useEffect, useReducer, useState, useContext} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {LocalizationContext} from '../components/Translations';

@@ -1,14 +1,11 @@
-/* eslint-disable prettier/prettier */
-import React, {useEffect, useReducer, useState, useContext} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import {FlatList, Text, View, StyleSheet} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import WriteComment from './WriteComment';
 import LinearGradient from 'react-native-linear-gradient';
-import {LocalizationContext} from '../../components/Translations';
 import {Rating} from 'react-native-ratings';
 
 const Comments = props => {
-  const {translations} = useContext(LocalizationContext);
   let [listData, setListData] = useState([]);
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
