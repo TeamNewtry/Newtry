@@ -8,15 +8,19 @@ import {Rating} from 'react-native-ratings';
 
 const WriteComment = props => {
   const {translations} = useContext(LocalizationContext);
-  let [comment, setComment] = useState('');
+  const [comment, setComment] = useState('');
   const {user, setUser} = useContext(AuthContext);
-  let [rating, setRating] = useState(0);
+  const [rating, setRating] = useState(0);
 
   const delay = ms => new Promise(res => setTimeout(res, ms));
 
   async function refreshComments() {
-    await delay(500);
-    props.updateComments();
+    try {
+      await delay(500);
+      props.updateComments();
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const handleComment = () => {

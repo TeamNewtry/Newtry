@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import {Rating} from 'react-native-ratings';
 
 const Comments = props => {
-  let [listData, setListData] = useState([]);
+  const [listData, setListData] = useState([]);
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
   useEffect(() => {
