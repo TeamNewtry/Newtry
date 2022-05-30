@@ -1,5 +1,5 @@
-import React, {useEffect, useReducer, useState, useContext} from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {LocalizationContext} from '../components/Translations';
 import {Rating} from 'react-native-ratings';

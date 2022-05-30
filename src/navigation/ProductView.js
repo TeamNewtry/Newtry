@@ -9,7 +9,6 @@ import IngredientList from '../components/IngredientList';
 import DetailPage from '../components/DetailPage';
 import CustomerRating from '../components/CustomerRating';
 import Comments from '../components/comments/Comments';
-import {white} from 'react-native-paper/lib/typescript/styles/colors';
 
 const ProductView = ({navigation, route}) => {
   const {translations} = useContext(LocalizationContext);

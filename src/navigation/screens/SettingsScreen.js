@@ -1,5 +1,5 @@
-import React, {useState, useContext} from 'react';
-import {View, Text, Button, StyleSheet, Image} from 'react-native';
+import React, {useContext, useState} from 'react';
+import {Button, Image, StyleSheet, Text, View} from 'react-native';
 import {ListItem} from 'react-native-elements';
 import {LocalizationContext} from '../../components/Translations';
 import {AuthContext} from '../../components/Authentication';
@@ -73,11 +73,6 @@ const LoginView = () => {
 
 const SettingsScreen = () => {
   const [value, setValue] = useState();
-
-  function updateSearch(val) {
-    //search logic or anything
-    console.log(val);
-  }
 
   const {translations, setAppLanguage} = useContext(LocalizationContext);
 
