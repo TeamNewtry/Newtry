@@ -1,12 +1,11 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {View, Image, StyleSheet, TouchableOpacity, Text} from 'react-native';
+import {Image, StyleSheet, TouchableOpacity, View} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
 import SettingsScreen from './screens/SettingsScreen';
 import HomeScreen from './screens/HomeScreen';
 import ScanScreen from './screens/ScanScreen';
-import {BottomNavigation} from 'react-native-paper';
 
 const Tab = createBottomTabNavigator();
 

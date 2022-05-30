@@ -1,6 +1,6 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Icon} from 'react-native-elements';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 const DetailPage = ({navigation, route}, component) => {
   return (

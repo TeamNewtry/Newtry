@@ -1,8 +1,8 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {Image, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {SearchBar} from 'react-native-elements';
 import {getProductByGTIN, searchProducts} from '../../CloudFunctionsWrapper';
-import {Table, TableWrapper, Rows} from 'react-native-table-component';
+import {Rows, Table, TableWrapper} from 'react-native-table-component';
 import RenderIf from '../../components/Renderif';
 import {LocalizationContext} from '../../components/Translations';
 
