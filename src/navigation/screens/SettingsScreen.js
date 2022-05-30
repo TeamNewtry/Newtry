@@ -126,9 +126,25 @@ export default SettingsScreen;
 
 const language = currentLang => {
   if (currentLang === 'en') {
-    return <Image source={require('../../assets/uk.png')} />;
+    return (
+      <View style={styles.label}>
+        <Image
+          style={styles.flag}
+          source={require('../../assets/united-kingdom.png')}
+        />
+        <Text style={styles.labelText}>English</Text>
+      </View>
+    );
   } else {
-    return <Image source={require('../../assets/germany.png')} />;
+    return (
+      <View style={styles.label}>
+        <Image
+          style={styles.flag}
+          source={require('../../assets/germany.png')}
+        />
+        <Text style={styles.labelText}>German</Text>
+      </View>
+    );
   }
 };
 
@@ -166,15 +182,22 @@ const styles = StyleSheet.create({
     marginLeft: 12,
     fontFamily: 'Comfortaa',
   },
-  language: {
-    marginBottom: 15,
-    width: '80%',
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    fontFamily: 'Comfortaa',
-  },
   chooseLanguage: {
-    display: 'flex',
+    flexDirection: 'row',
     backgroundColor: 'transparent',
+  },
+  flag: {
+    width: 70,
+    height: 70,
+  },
+  label: {
+    flexDirection: 'row',
+  },
+  labelText: {
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    marginLeft: 20,
+    fontFamily: 'Comfortaa',
+    fontSize: 18,
   },
 });

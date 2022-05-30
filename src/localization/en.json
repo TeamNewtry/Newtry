@@ -20,5 +20,7 @@
   "nutrition.table.field6": " Protein",
   "nutrition.table.field7": " Salt",
   "nutrition.ingredients.header": " Ingredients",
-  "settings.change_language": "Change Language"
+  "settings.change_language": "Change Language",
+  "settings.choose_german": "German",
+  "settings.choose_english": "English"
 }
