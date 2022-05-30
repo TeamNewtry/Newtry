@@ -9,6 +9,7 @@ import IngredientList from '../components/IngredientList';
 import DetailPage from '../components/DetailPage';
 import CustomerRating from '../components/CustomerRating';
 import Comments from '../components/comments/Comments';
+import {white} from 'react-native-paper/lib/typescript/styles/colors';
 
 const ProductView = ({navigation, route}) => {
   const {translations} = useContext(LocalizationContext);
@@ -33,7 +34,19 @@ const ProductView = ({navigation, route}) => {
         </View>
         <View style={styles.padding}>
           <View style={styles.textContainer}>
-            <Text style={styles.title}>{data.name}</Text>
+            <View styles={styles.textContainer}>
+              <Text style={styles.title}>{data.name}</Text>
+              <View style={styles.climateRating}>
+                {data.climateRating == null ? (
+                  <Text style={styles.climateRatingText}>?</Text>
+                ) : (
+                  <Text style={styles.climateRatingText}>
+                    {data.climateRating}
+                  </Text>
+                )}
+                <Text style={styles.climateRatingLabel}>ECO</Text>
+              </View>
+            </View>
             <Text style={styles.gtin}>GTIN: {data.gtin}</Text>
             <Text />
             <Text style={styles.description}>{data.description}</Text>
@@ -120,5 +133,28 @@ const styles = StyleSheet.create({
     zIndex: 10,
     top: 5,
     left: 5,
+  },
+  climateRating: {
+    position: 'absolute',
+    width: 80,
+    height: 80,
+    borderRadius: 100,
+    top: -70,
+    right: 5,
+    backgroundColor: '#00C2FF',
+    justifyContent: 'center',
+  },
+  climateRatingText: {
+    textAlign: 'center',
+    fontFamily: 'Comfortaa',
+    color: 'white',
+    fontSize: 40,
+    top: 1,
+  },
+  climateRatingLabel: {
+    fontSize: 8,
+    textAlign: 'center',
+    color: 'white',
+    top: -3,
   },
 });
