@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import {Row, Rows, Table, TableWrapper} from 'react-native-table-component';
-import Unorderedlist from 'react-native-unordered-list';
 import {useAsync} from 'react-async';
 import {getProductByGTIN} from '../CloudFunctionsWrapper';
-import {Icon} from 'react-native-elements';
 import {LocalizationContext} from '../components/Translations';
 import LinearGradient from 'react-native-linear-gradient';
 import NutritionTable from '../components/NutritionTable';
 import IngredientList from '../components/IngredientList';
+import DetailPage from '../components/DetailPage';
+import CustomerRating from '../components/CustomerRating';
+import Comments from '../components/comments/Comments';
 
 const ProductView = ({navigation, route}) => {
   const {translations} = useContext(LocalizationContext);
@@ -17,45 +17,69 @@ const ProductView = ({navigation, route}) => {
   });
   console.log(JSON.stringify(data));
   if (typeof data !== 'undefined') {
-    return (
-      <View style={styles.container}>
-        <View style={styles.backArrow}>
-          <Icon
-            name={'arrow-back'}
-            size={20}
-            reverse={true}
-            type={'ionicons'}
-            onPress={() => navigation.navigate('HomeScreen', {route})}
-            reverseColor={'black'}
-            color={'#EAFFFA'}
+    const page = (
+      <ScrollView>
+        <View style={styles.imageBorder}>
+          <Image
+            source={{uri: data.pictures.toString()}}
+            style={styles.image}
+          />
+          <LinearGradient
+            start={{x: 1, y: 0}}
+            end={{x: 0, y: 0}}
+            colors={['#24FF00', '#00D8D4', '#60dbfd']}
+            style={styles.line}
           />
         </View>
-        <ScrollView>
-          <View style={styles.imageBorder}>
-            <Image
-              source={{uri: data.pictures.toString()}}
-              style={styles.image}
-            />
-            <LinearGradient
-              start={{x: 1, y: 0}}
-              end={{x: 0, y: 0}}
-              colors={['#24FF00', '#00D8D4', '#60dbfd']}
-              style={styles.line}
-            />
-          </View>
-          <View style={styles.padding}>
-            <View style={styles.textContainer}>
+        <View style={styles.padding}>
+          <View style={styles.textContainer}>
+            <View styles={styles.textContainer}>
               <Text style={styles.title}>{data.name}</Text>
-              <Text style={styles.gtin}>GTIN: {data.gtin}</Text>
-              <Text />
-              <Text style={styles.description}>{data.description}</Text>
+              <View style={styles.climateRating}>
+                {data.climateRating == null ? (
+                  <Text style={styles.climateRatingText}>?</Text>
+                ) : (
+                  <Text style={styles.climateRatingText}>
+                    {data.climateRating}
+                  </Text>
+                )}
+                <Text style={styles.climateRatingLabel}>ECO</Text>
+              </View>
             </View>
-            <NutritionTable data={data.nutrition} />
-            <IngredientList data={data.ingredients} />
+            <Text style={styles.gtin}>GTIN: {data.gtin}</Text>
+            <Text />
+            <Text style={styles.description}>{data.description}</Text>
           </View>
-        </ScrollView>
-      </View>
+          <NutritionTable data={data.nutrition} />
+          <IngredientList data={data.ingredients} />
+        </View>
+        <LinearGradient
+          start={{x: 1, y: 0}}
+          end={{x: 0, y: 0}}
+          colors={['#24FF00', '#00D8D4', '#60dbfd']}
+          style={styles.line}
+        />
+
+        <View style={styles.padding}>
+          <Text style={styles.subTitle}>
+            {translations['customerrating.header']}
+          </Text>
+          <CustomerRating productId={data.gtin} />
+        </View>
+        <LinearGradient
+          start={{x: 1, y: 0}}
+          end={{x: 0, y: 0}}
+          colors={['#24FF00', '#00D8D4', '#60dbfd']}
+          style={styles.line}
+        />
+
+        <View style={styles.padding}>
+          <Text style={styles.subTitle}>{translations['rating.header']}</Text>
+          <Comments productId={data.gtin} />
+        </View>
+      </ScrollView>
     );
+    return DetailPage({navigation, route}, page);
   } else {
     return <View />;
   }
@@ -68,10 +92,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#EAFFFA',
   },
-  head: {
-    height: 40,
-    backgroundColor: '#f1f8ff',
-  },
   wrapper: {
     flexDirection: 'row',
   },
@@ -80,8 +100,12 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     fontFamily: 'Comfortaa',
   },
+  subTitle: {
+    fontSize: 16,
+    paddingBottom: 20,
+    fontFamily: 'Comfortaa',
+  },
   textContainer: {marginTop: 10, marginBottom: 10},
-  text: {textAlign: 'left'},
   image: {
     width: window.outerWidth,
     height: 400,
@@ -101,12 +125,35 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   line: {
-    height: 3,
+    height: 2,
   },
   backArrow: {
     position: 'absolute',
     zIndex: 10,
     top: 5,
     left: 5,
+  },
+  climateRating: {
+    position: 'absolute',
+    width: 80,
+    height: 80,
+    borderRadius: 100,
+    top: -70,
+    right: 5,
+    backgroundColor: '#00C2FF',
+    justifyContent: 'center',
+  },
+  climateRatingText: {
+    textAlign: 'center',
+    fontFamily: 'Comfortaa',
+    color: 'white',
+    fontSize: 40,
+    top: 1,
+  },
+  climateRatingLabel: {
+    fontSize: 8,
+    textAlign: 'center',
+    color: 'white',
+    top: -3,
   },
 });

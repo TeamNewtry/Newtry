@@ -1,7 +1,6 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {View, Text, Button, StyleSheet, Image, ScrollView} from 'react-native';
-import {Avatar, ListItem, Icon} from 'react-native-elements';
-import Searchbar from '../../components/TextInput.component';
+import React, {useContext, useState} from 'react';
+import {Button, Image, StyleSheet, Text, View} from 'react-native';
+import {ListItem} from 'react-native-elements';
 import {LocalizationContext} from '../../components/Translations';
 import {AuthContext} from '../../components/Authentication';
 import auth from '@react-native-firebase/auth';
@@ -34,10 +33,6 @@ const LoginView = () => {
     setSigningIn(false);
   };
 
-  const onGithubSignIn = () => {
-    return null;
-  };
-
   const onLogout = () => {
     console.log('Signing out...');
     auth().signOut();
@@ -63,6 +58,7 @@ const LoginView = () => {
           {`${translations['settings.login.status']} ${user.displayName} (${user.email})`}
         </Text>
         <Button
+          color="#60dbfd"
           title={translations['settings.login.logout']}
           onPress={onLogout}
         />
@@ -72,15 +68,7 @@ const LoginView = () => {
 };
 
 const SettingsScreen = () => {
-  const [value, setValue] = useState();
-
-  function updateSearch(val) {
-    //search logic or anything
-    console.log(val);
-  }
-
-  const {translations, appLanguage, setAppLanguage} =
-    useContext(LocalizationContext);
+  const {translations, setAppLanguage} = useContext(LocalizationContext);
 
   return (
     <View style={styles.container}>
@@ -100,22 +88,20 @@ const SettingsScreen = () => {
       <View style={styles.separator} />
 
       <View>
-        <Text h4 h4Style={styles.language}>
+        <Text style={styles.subTitle}>
           {translations['settings.change_language']}
         </Text>
         {translations.getAvailableLanguages().map((currentLang, i) => (
           <ListItem
             key={i}
-            bottomDivider
+            containerStyle={styles.chooseLanguage}
             onPress={() => {
               setAppLanguage(currentLang);
             }}>
-            <ListItem.Content>
-              <ListItem.Title>{currentLang}</ListItem.Title>
-            </ListItem.Content>
-            {appLanguage === currentLang ? (
+            <ListItem.Content>{language(currentLang)}</ListItem.Content>
+            {/* {appLanguage === currentLang ? (
               <Icon name="check" size={20} />
-            ) : null}
+            ) : null} */}
           </ListItem>
         ))}
       </View>
@@ -124,6 +110,30 @@ const SettingsScreen = () => {
 };
 
 export default SettingsScreen;
+
+const language = currentLang => {
+  if (currentLang === 'en') {
+    return (
+      <View style={styles.label}>
+        <Image
+          style={styles.flag}
+          source={require('../../assets/united-kingdom.png')}
+        />
+        <Text style={styles.labelText}>English</Text>
+      </View>
+    );
+  } else {
+    return (
+      <View style={styles.label}>
+        <Image
+          style={styles.flag}
+          source={require('../../assets/germany.png')}
+        />
+        <Text style={styles.labelText}>German</Text>
+      </View>
+    );
+  }
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -155,15 +165,26 @@ const styles = StyleSheet.create({
   subTitle: {
     width: '100%',
     fontSize: 20,
-    marginBottom: 3,
+    marginBottom: 10,
     marginLeft: 12,
     fontFamily: 'Comfortaa',
   },
-  language: {
-    marginTop: 25,
-    marginBottom: 25,
-    width: '80%',
+  chooseLanguage: {
     flexDirection: 'row',
-    alignItems: 'flex-start',
+    backgroundColor: 'transparent',
+  },
+  flag: {
+    width: 70,
+    height: 70,
+  },
+  label: {
+    flexDirection: 'row',
+  },
+  labelText: {
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    marginLeft: 20,
+    fontFamily: 'Comfortaa',
+    fontSize: 18,
   },
 });

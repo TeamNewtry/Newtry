@@ -6,18 +6,18 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/4f17db315b4247d7ad9d232d2902f9b8)](https://www.codacy.com/gh/TeamNewtry/Newtry/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=TeamNewtry/Newtry&amp;utm_campaign=Badge_Grade)
 [![DeepScan grade](https://deepscan.io/api/teams/17820/projects/21155/branches/599182/badge/grade.svg)](https://deepscan.io/dashboard#view=project&tid=17820&pid=21155&bid=599182)
 
-![Built with - JavaScript](https://img.shields.io/badge/Built_with-javascript-f7df1e.svg?style=flat&logo=javascript&logoColor=%23F7DF1E&)
-![Built with - React Native](https://img.shields.io/badge/Built_with-react_native-66d2f0.svg?style=flat&logo=react&logoColor=%2361DAFB)
-![Built with - Yarn](https://img.shields.io/badge/Built_with-yarn-%232C8EBB.svg?style=flat&logo=yarn&logoColor=white)
-![Built with - Firebase](https://img.shields.io/badge/Built_with-firebase-%23039BE5.svg?style=flat&logo=firebase)
+![Built with - JavaScript](https://img.shields.io/badge/Built_with-JavaScript-f7df1e.svg?style=flat&logo=javascript&logoColor=%23F7DF1E&)
+![Built with - React Native](https://img.shields.io/badge/Built_with-React_Native-66d2f0.svg?style=flat&logo=react&logoColor=%2361DAFB)
+![Built with - Yarn](https://img.shields.io/badge/Built_with-Yarn-%232C8EBB.svg?style=flat&logo=yarn&logoColor=white)
+![Built with - Firebase](https://img.shields.io/badge/Built_with-Firebase-%23039BE5.svg?style=flat&logo=firebase)
 ![Built with - ESLint](https://img.shields.io/badge/Built_with-ESLint-4B3263?style=flat&logo=eslint&logoColor=white)
-![Built with - Jest](https://img.shields.io/badge/Built_with-jest-%23C21325?style=flat&logo=jest&logoColor=white)
-![Built with - Git](https://img.shields.io/badge/Built_with-git-%23F05033.svg?style=flat&logo=git&logoColor=white)
-![Built with - GitHub](https://img.shields.io/badge/Built_with-github-%23121011.svg?style=flat&logo=github&logoColor=white)
-![Built with - GitHub Actions](https://img.shields.io/badge/Built_with-github%20actions-%232671E5.svg?style=flat&logo=githubactions&logoColor=white)
+![Built with - Jest](https://img.shields.io/badge/Built_with-Jest-%23C21325?style=flat&logo=jest&logoColor=white)
+![Built with - Git](https://img.shields.io/badge/Built_with-Git-%23F05033.svg?style=flat&logo=git&logoColor=white)
+![Built with - GitHub](https://img.shields.io/badge/Built_with-GitHub-%23121011.svg?style=flat&logo=github&logoColor=white)
+![Built with - GitHub Actions](https://img.shields.io/badge/Built_with-GitHub%20Actions-%232671E5.svg?style=flat&logo=githubactions&logoColor=white)
 ![Built with - Android Studio](https://img.shields.io/badge/Bulit_with-Android%20Studio-3DDC84.svg?style=flat&logo=android-studio&logoColor=white)
 ![Built with - Visual Studio Code](https://img.shields.io/badge/Built_with-Visual%20Studio%20Code-0078d7.svg?style=flat&logo=visual-studio-code&logoColor=white)
-![Built with - WebStorm](https://img.shields.io/badge/Built_with-webstorm-143?style=flat&logo=webstorm&logoColor=white&color=black)
+![Built with - WebStorm](https://img.shields.io/badge/Built_with-WebStorm-143?style=flat&logo=webstorm&logoColor=white&color=black)
 ![Built with - Coffee](https://img.shields.io/badge/Built_with-Coffee-2F2625?logo=Coffeescript)
 ![Built with - Love](https://img.shields.io/badge/Built_with-Love-E71D29?logo=Undertale)
 
@@ -30,4 +30,3 @@
 
 ![GitHub last commit](https://img.shields.io/github/last-commit/TeamNewtry/Newtry)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/TeamNewtry/Newtry)
-
