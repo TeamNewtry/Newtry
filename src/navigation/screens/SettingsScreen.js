@@ -33,10 +33,6 @@ const LoginView = () => {
     setSigningIn(false);
   };
 
-  const onGithubSignIn = () => {
-    return null;
-  };
-
   const onLogout = () => {
     console.log('Signing out...');
     auth().signOut();
@@ -72,8 +68,6 @@ const LoginView = () => {
 };
 
 const SettingsScreen = () => {
-  const [value, setValue] = useState();
-
   const {translations, setAppLanguage} = useContext(LocalizationContext);
 
   return (
