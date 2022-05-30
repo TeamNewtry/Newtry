@@ -25,10 +25,10 @@ const CustomerRating = props => {
 
   return (
     <View>
-      {Data.map(postData => {
+      {Data.map((postData, idx) => {
         if (postData.count > 0) {
           return (
-            <View>
+            <View key={idx}>
               <View style={styles.ratingContainer}>
                 <Rating
                   type="custom"
@@ -53,7 +53,7 @@ const CustomerRating = props => {
           );
         } else {
           return (
-            <View>
+            <View key={idx}>
               <View style={styles.ratingContainer}>
                 <Rating
                   type="custom"
