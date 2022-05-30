@@ -1,7 +1,6 @@
-import React, {useState, useEffect, useContext} from 'react';
-import {View, Text, Button, StyleSheet, Image, ScrollView} from 'react-native';
-import {Avatar, ListItem, Icon} from 'react-native-elements';
-import Searchbar from '../../components/TextInput.component';
+import React, {useState, useContext} from 'react';
+import {View, Text, Button, StyleSheet, Image} from 'react-native';
+import {ListItem} from 'react-native-elements';
 import {LocalizationContext} from '../../components/Translations';
 import {AuthContext} from '../../components/Authentication';
 import auth from '@react-native-firebase/auth';
@@ -80,8 +79,7 @@ const SettingsScreen = () => {
     console.log(val);
   }
 
-  const {translations, appLanguage, setAppLanguage} =
-    useContext(LocalizationContext);
+  const {translations, setAppLanguage} = useContext(LocalizationContext);
 
   return (
     <View style={styles.container}>
