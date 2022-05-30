@@ -1,14 +1,12 @@
-import React, {useEffect, useReducer, useState, useContext} from 'react';
+import React, {useEffect, useReducer, useState} from 'react';
 import {FlatList, Text, View, StyleSheet} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import WriteComment from './WriteComment';
 import LinearGradient from 'react-native-linear-gradient';
-import {LocalizationContext} from '../../components/Translations';
 import {Rating} from 'react-native-ratings';
 
 const Comments = props => {
-  const {translations} = useContext(LocalizationContext);
-  let [listData, setListData] = useState([]);
+  const [listData, setListData] = useState([]);
   const [reducerValue, forceUpdate] = useReducer(x => x + 1, 0);
 
   useEffect(() => {
@@ -31,14 +29,14 @@ const Comments = props => {
         <View style={styles.commentHeader}>
           <Text style={styles.font}>{item.userName}</Text>
           <Rating
-          type='custom'
-          ratingColor='#f1c40f'
-          ratingBackgroundColor='#a5b3af'
-          tintColor='#EAFFFA'
-          startingValue={item.productRating}
-          imageSize={18}
-          readonly={true}
-          style={{ paddingTop: 5}}
+            type="custom"
+            ratingColor="#f1c40f"
+            ratingBackgroundColor="#a5b3af"
+            tintColor="#EAFFFA"
+            startingValue={item.productRating}
+            imageSize={18}
+            readonly={true}
+            style={{paddingTop: 5}}
           />
         </View>
         <Text style={styles.text}>{item.comment}</Text>

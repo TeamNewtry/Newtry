@@ -20,14 +20,16 @@
     "@react-native-google-signin/google-signin": "^7.2.2",
     "@react-navigation/bottom-tabs": "^6.0.9",
     "@react-navigation/native": "^6.0.6",
+    "enzyme": "^3.11.0",
     "react": "17.0.2",
     "react-async": "^10.0.1",
-    "react-native": "^0.66.3",
+    "react-native": "^0.68.2",
     "react-native-camera": "^4.2.1",
     "react-native-elements": "^3.4.2",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-localization": "^2.1.7",
     "react-native-localize": "^2.1.7",
+    "react-native-ratings": "^8.1.0",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
     "react-native-unordered-list": "^1.0.4",
@@ -41,12 +43,19 @@
     "babel-jest": "^27.3.1",
     "eslint": "^7.32.0",
     "jest": "^27.3.1",
-    "metro-react-native-babel-preset": "^0.66.2",
+    "metro-react-native-babel-preset": "^0.67.0",
     "react-native-paper": "^4.10.1",
     "react-native-table-component": "^1.2.1",
     "react-test-renderer": "17.0.2"
   },
   "jest": {
-    "preset": "react-native"
+    "preset": "react-native",
+
+    "transformIgnorePatterns": ["node_modules/(?!((jest-)?react-native(-elements|-size-matters|-ratings|-linear-gradient|-localize|-table-component|-camera|-iphone-x-helper|-unordered-list|-safe-area-context)?|@react-native(-community|-google-signin|-firebase)?|@react-navigation)/)"],
+    "setupFiles": ["./jest-setup.js"],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
   }
 }
