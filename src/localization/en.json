@@ -25,5 +25,9 @@
   "comment.placeholder": "Enter comment",
   "customerrating.header": "Customer rating",
   "ratings.text": "Ratings",
-  "ratings.count": "out of 5"
+  "ratings.count": "out of 5",
+  "customerRating.user.error.title": "Please sign in",
+  "customerRating.user.error.text": "You need to be signed in for commenting this product",
+  "customerRating.user.error.confirm": "Sign in"
+
 }

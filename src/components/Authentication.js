@@ -28,8 +28,7 @@ export const AuthProvider = ({children}) => {
   }
 
   useEffect(() => {
-    const unsubscribe = auth().onAuthStateChanged(onAuthStateChanged);
-    return unsubscribe; // unsubscribe on unmount (asynchronously run)
+    return auth().onAuthStateChanged(onAuthStateChanged); // unsubscribe on unmount (asynchronously run)
   });
 
   // block rendering while auth state not yet determined
