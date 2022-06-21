@@ -1,5 +1,11 @@
 import React, {useState, useContext} from 'react';
-import {View, TextInput, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import {AuthContext} from '../Authentication';
 import {Icon} from 'react-native-elements';
@@ -24,12 +30,32 @@ const WriteComment = props => {
   }
 
   const handleComment = () => {
+    if (user === null) {
+      console.log('user not signed in');
+      Alert.alert(
+        translations['customerRating.user.error.title'],
+        translations['customerRating.user.error.text'],
+        [
+          {
+            text: 'Cancel',
+            style: 'cancel',
+          },
+          {
+            text: translations['customerRating.user.error.confirm'],
+            onPress: () => console.log('TODO: redirect to login'),
+          },
+        ],
+      );
+      return;
+    }
+
     const data = {
       comment: comment,
       userName: user.displayName,
       // userPic: user.photoURL,
       productRating: rating,
     };
+
     if (rating > 0) {
       firestore()
         .doc(`comments/${props.productId}`)

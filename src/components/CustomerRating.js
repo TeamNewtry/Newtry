@@ -1,7 +1,7 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-import {LocalizationContext} from '../components/Translations';
+import {LocalizationContext} from './Translations';
 import {Rating} from 'react-native-ratings';
 
 const CustomerRating = props => {
@@ -41,7 +41,9 @@ const CustomerRating = props => {
                   readonly={true}
                 />
                 <Text style={styles.ratingText}>
-                  {postData.rating / postData.count}{' '}
+                  {(
+                    Math.round((postData.rating / postData.count) * 10) / 10
+                  ).toFixed(1)}{' '}
                   {translations['ratings.count']}
                 </Text>
               </View>
